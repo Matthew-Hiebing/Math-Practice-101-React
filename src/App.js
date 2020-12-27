@@ -13,9 +13,7 @@ import Scores from './Components/Scores/Scores';
 class App extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
-
     }
   }
 
@@ -32,6 +30,7 @@ class App extends React.Component {
                 <Link className="navbar-brand" to="/admin">Admin</Link>
               </div>
             </Navbar>
+
             <Switch>
               <Route exact path="/">
                 <Home {...this.state} />
@@ -45,7 +44,6 @@ class App extends React.Component {
             </Switch>
           </Container>
         </div>
-
       </Router>
     );
   }

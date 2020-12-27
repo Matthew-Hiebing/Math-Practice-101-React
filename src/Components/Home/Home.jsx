@@ -1,5 +1,5 @@
 import React from 'react';
-import {Jumbotron, Button, Link} from 'react-bootstrap';
+import {Jumbotron, Button, } from 'react-bootstrap';
 
 export default class Home extends React.Component {
     constructor(props) {
@@ -43,7 +43,7 @@ export default class Home extends React.Component {
                         (
                             <div>
                                 <Button id="login" type='submit' className="btn btn-dark" onClick={this.loginButtonHandler}>Login</Button>
-                                <a className="btn btn-dark" id="signup" href="#">Signup Page</a>
+                                <Button id="signup" type='submit' className="btn btn-dark" onClick={this.loginButtonHandler}>Signup</Button>
                             </div>
                         )
                     }
