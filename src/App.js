@@ -9,6 +9,7 @@ import {
 import Home from './Components/Home/Home';
 import Game from './Components/Game/Game';
 import Scores from './Components/Scores/Scores';
+import Login from './Components/Unauthenticated/Login';
 
 class App extends React.Component {
   constructor(props) {
@@ -22,26 +23,52 @@ class App extends React.Component {
       <Router>
         <div>
           <Container>
-            <Navbar className="navbar navbar-expand-lg navbar-dark bg-dark">
-              <div className="container">
-                <Link className="navbar-brand" to="/">Home</Link>
-                <Link className="navbar-brand" to="/game">Game</Link>
-                <Link className="navbar-brand" to="/scores">Scores</Link>
-                <Link className="navbar-brand" to="/admin">Admin</Link>
-              </div>
-            </Navbar>
+            {
+              (false) ?
+              (
+                <div>
+                    <Navbar className="navbar navbar-expand-lg navbar-dark bg-dark">
+                      <div className="container">
+                        <Link className="navbar-brand" to="/">Home</Link>
+                        <Link className="navbar-brand" to="/game">Game</Link>
+                        <Link className="navbar-brand" to="/scores">Scores</Link>
+                        <Link className="navbar-brand" to="/admin">Admin</Link>
+                      </div>
+                    </Navbar>
 
-            <Switch>
-              <Route exact path="/">
-                <Home {...this.state} />
-              </Route>
-              <Route path="/game">
-                <Game {...this.state} />
-              </Route>
-              <Route path="/scores">
-                <Scores {...this.state} />
-              </Route>
-            </Switch>
+                    <Switch>
+                      <Route exact path="/">
+                        <Home {...this.state} />
+                      </Route>
+                      <Route path="/game">
+                        <Game {...this.state} />
+                      </Route>
+                      <Route path="/scores">
+                        <Scores {...this.state} />
+                      </Route>
+                    </Switch>
+                </div>
+              ) :
+              (
+                <div>
+                    <Navbar className="navbar navbar-expand-lg navbar-dark bg-dark">
+                      <div className="container">
+                        <Link className="navbar-brand" to="/">Home</Link>
+                      </div>
+                    </Navbar>
+
+                    <Switch>
+                      <Route exact path="/" component={Home} />
+                      <Route path="/login">
+                        <Login />
+                      </Route>
+                      <Route path="/signup">
+
+                      </Route>
+                    </Switch>
+                </div>
+              )
+            }
           </Container>
         </div>
       </Router>
