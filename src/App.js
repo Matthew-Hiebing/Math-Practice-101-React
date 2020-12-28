@@ -1,5 +1,5 @@
 import React from 'react';
-import {Container, Navbar} from 'react-bootstrap';
+import { Container, Navbar } from 'react-bootstrap';
 import {
   BrowserRouter as Router,
   Switch,
@@ -10,6 +10,7 @@ import Home from './Components/Home/Home';
 import Game from './Components/Game/Game';
 import Scores from './Components/Scores/Scores';
 import Login from './Components/Unauthenticated/Login';
+import Signup from './Components/Unauthenticated/Signup';
 
 class App extends React.Component {
   constructor(props) {
@@ -24,9 +25,9 @@ class App extends React.Component {
         <div>
           <Container>
             {
-              (false) ?
-              (
-                <div>
+              (true) ? // if logged in see below
+                (
+                  <div>
                     <Navbar className="navbar navbar-expand-lg navbar-dark bg-dark">
                       <div className="container">
                         <Link className="navbar-brand" to="/">Home</Link>
@@ -47,10 +48,10 @@ class App extends React.Component {
                         <Scores {...this.state} />
                       </Route>
                     </Switch>
-                </div>
-              ) :
-              (
-                <div>
+                  </div>
+                ) : // else see below
+                (
+                  <div>
                     <Navbar className="navbar navbar-expand-lg navbar-dark bg-dark">
                       <div className="container">
                         <Link className="navbar-brand" to="/">Home</Link>
@@ -63,11 +64,11 @@ class App extends React.Component {
                         <Login />
                       </Route>
                       <Route path="/signup">
-
+                        <Signup />
                       </Route>
                     </Switch>
-                </div>
-              )
+                  </div>
+                )
             }
           </Container>
         </div>
