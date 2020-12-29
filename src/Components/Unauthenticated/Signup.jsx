@@ -40,9 +40,22 @@ export default class Signup extends React.Component {
         }
     }
 
-    submitButtonHandler() {
-        axios.post('/accounts/signup/', {
-            username
+    submitButtonHandler = (event) => {
+        event.preventDefault();
+        axios.post('http://localhost:8000/accounts/signup/', {
+            username: this.state.username,
+            password: this.state.password
+        })
+        .then((response) => {
+            if (response.status == 201) {
+                console.log(response.data)
+                this.props.history.push('/')
+            } else {
+                console.log(response.data);
+            }
+        })
+        .catch((error) => {
+            console.log(error);
         })
     }
 
@@ -66,7 +79,7 @@ export default class Signup extends React.Component {
                         <Form.Text className="text-muted">Passwords don't match</Form.Text>
                     </Form.Group>
 
-                    <Button className="btn btn-dark" type="submit">Submit</Button>
+                    <Button className="btn btn-dark" type="submit" onClick={this.submitButtonHandler}>Submit</Button>
                 </Form>
             </div>
         )
