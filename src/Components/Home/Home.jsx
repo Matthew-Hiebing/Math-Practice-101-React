@@ -43,7 +43,7 @@ export default class Home extends React.Component {
                         (
                             <div>
                                 <Button id="login" type='submit' className="btn btn-dark" onClick={() => this.props.history.push('/login')}>Login</Button>
-                                <Button id="signup" type='submit' className="btn btn-dark" onClick={this.loginButtonHandler}>Signup</Button>
+                                <Button id="signup" type='submit' className="btn btn-dark" onClick={() => this.props.history.push('/signup')}>Signup</Button>
                             </div>
                         )
                     }

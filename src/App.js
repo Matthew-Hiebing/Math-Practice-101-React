@@ -25,7 +25,7 @@ class App extends React.Component {
         <div>
           <Container>
             {
-              (true) ? // if logged in see below
+              (false) ? // if logged in see below
                 (
                   <div>
                     <Navbar className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -38,9 +38,7 @@ class App extends React.Component {
                     </Navbar>
 
                     <Switch>
-                      <Route exact path="/">
-                        <Home {...this.state} />
-                      </Route>
+                      <Route exact path="/" component={Home} />
                       <Route path="/game">
                         <Game {...this.state} />
                       </Route>
@@ -49,7 +47,7 @@ class App extends React.Component {
                       </Route>
                     </Switch>
                   </div>
-                ) : // else see below
+                ) : // else show
                 (
                   <div>
                     <Navbar className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -60,12 +58,8 @@ class App extends React.Component {
 
                     <Switch>
                       <Route exact path="/" component={Home} />
-                      <Route path="/login">
-                        <Login />
-                      </Route>
-                      <Route path="/signup">
-                        <Signup />
-                      </Route>
+                      <Route path="/login" component={Login} />
+                      <Route path="/signup" component={Signup} />
                     </Switch>
                   </div>
                 )
