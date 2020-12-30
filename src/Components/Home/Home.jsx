@@ -6,14 +6,7 @@ export default class Home extends React.Component {
         super(props);
 
         this.state = {
-            logged_in: false
         }
-    }
-
-    loginButtonHandler = () => {
-        // let tempState = this.state;
-        // tempState.logged_in = !this.state.logged_in;
-        this.setState({logged_in: !this.state.logged_in});
     }
 
     render() {
@@ -34,10 +27,10 @@ export default class Home extends React.Component {
                     <p>Password: testPassword3456</p>
 
                     {
-                        (this.state.logged_in) ?
+                        (this.props.is_logged_in) ?
                         (
                             <div>
-                                <Button id="logout" type='submit' className="btn btn-dark" onClick={this.loginButtonHandler}>Logout</Button>
+                                <Button id="logout" type='submit' className="btn btn-dark" onClick={this.props.logoutHandler}>Logout</Button>
                             </div>
                         ) :
                         (

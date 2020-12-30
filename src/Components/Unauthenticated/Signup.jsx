@@ -47,6 +47,7 @@ export default class Signup extends React.Component {
             password: this.state.password
         })
         .then((response) => {
+            console.log(response);
             if (response.status == 201) {
                 console.log(response.data)
                 this.props.history.push('/')
@@ -63,19 +64,19 @@ export default class Signup extends React.Component {
         return (
             <div>
                 <Form>
-                    <Form.Group controlId="formBasicEmail">
+                    <Form.Group controlId="formBasicUsername">
                         <Form.Label>User Name</Form.Label>
-                        <Form.Control name="username" type="input" placeholder="Enter a username" onChange={this.inputFieldHandler} />
+                        <Form.Control name="username" type="input" placeholder="Enter your username here" onChange={this.inputFieldHandler} />
                     </Form.Group>
 
                     <Form.Group controlId="formBasicPassword">
                         <Form.Label>Password</Form.Label>
-                        <Form.Control name="password" type="password" placeholder="Password" onChange={this.inputFieldHandler} isValid={this.state.passwordsMatch} />
+                        <Form.Control name="password" type="password" placeholder="Enter your password here" onChange={this.inputFieldHandler} isValid={this.state.passwordsMatch} />
                     </Form.Group>
 
                     <Form.Group controlId="formBasicPasswordConfirmation">
                         <Form.Label>Password Confirmation</Form.Label>
-                        <Form.Control name="passwordConfirmation" type="password" placeholder="Password confirmation" onChange={this.inputFieldHandler} isValid={this.state.passwordsMatch} />
+                        <Form.Control name="passwordConfirmation" type="password" placeholder="Enter your password here" onChange={this.inputFieldHandler} isValid={this.state.passwordsMatch} />
                         <Form.Text className="text-muted">Passwords don't match</Form.Text>
                     </Form.Group>
 
