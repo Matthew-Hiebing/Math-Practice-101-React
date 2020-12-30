@@ -48,7 +48,7 @@ export default class Signup extends React.Component {
         })
         .then((response) => {
             console.log(response);
-            if (response.status == 201) {
+            if (response.status === 201) {
                 console.log(response.data)
                 this.props.history.push('/')
             } else {

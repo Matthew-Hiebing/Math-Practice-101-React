@@ -11,6 +11,10 @@ import Game from './Components/Game/Game';
 import Scores from './Components/Scores/Scores';
 import Login from './Components/Unauthenticated/Login';
 import Signup from './Components/Unauthenticated/Signup';
+import Logged_In from './Components/Authenticated/Logged_In';
+import Logged_Out from './Components/Authenticated/Logged_Out';
+import Signed_In from './Components/Authenticated/Signed_In';
+
 
 class App extends React.Component {
   constructor(props) {
@@ -54,7 +58,6 @@ class App extends React.Component {
       <Router>
         <div>
           <Container>
-
             {
               (this.state.is_logged_in) ?
               (
@@ -102,7 +105,6 @@ class App extends React.Component {
       </Router>
     );
   }
-
 }
 
 export default App;
