@@ -30,7 +30,7 @@ export default class Home extends React.Component {
                         (this.props.is_logged_in) ?
                         (
                             <div>
-                                <Button id="logout" type='submit' className="btn btn-dark" onClick={this.props.logoutHandler}>Logout</Button>
+                                <Button id="logout" type='submit' className="btn btn-dark" onClick={() => this.props.history.push('/logged-out')}>Logout</Button>
                             </div>
                         ) :
                         (

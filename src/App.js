@@ -11,9 +11,9 @@ import Game from './Components/Game/Game';
 import Scores from './Components/Scores/Scores';
 import Login from './Components/Unauthenticated/Login';
 import Signup from './Components/Unauthenticated/Signup';
-import Logged_In from './Components/Authenticated/Logged_In';
-import Logged_Out from './Components/Authenticated/Logged_Out';
-import Signed_In from './Components/Authenticated/Signed_In';
+import LoggedIn from './Components/Authenticated/LoggedIn';
+import LoggedOut from './Components/Authenticated/LoggedOut';
+import SignedIn from './Components/Authenticated/SignedIn';
 
 
 class App extends React.Component {
@@ -54,6 +54,7 @@ class App extends React.Component {
   }
 
   render() {
+    const { match, location, history } = this.props;
     return (
       <Router>
         <div>
@@ -87,6 +88,7 @@ class App extends React.Component {
                       <Route exact path="/" component={props => (<Home {...props} {...this.state} logoutHandler={this.logoutHandler} />)} />
                       <Route path="/game" component={props => (<Game {...props} />)} />
                       <Route path="/scores" component={props => (<Scores {...props} />)} />
+                      <Route path="/logged-out" component={props => (<LoggedOut {...props} {...this.state} killSession={this.logoutHandler} />)} />
                     </Switch>
                   </div>
                 ) : // else show
@@ -96,6 +98,7 @@ class App extends React.Component {
                       <Route exact path="/" component={props => (<Home {...props} {...this.state} logoutHandler={this.logoutHandler} />)} />
                       <Route path="/login" component={props => (<Login {...props} loginHandler={this.loginHandler} />)} />
                       <Route path="/signup" component={props => (<Signup {...props} />)} />
+                      <Route path="/logged-out" component={props => (<LoggedOut {...props} {...this.state} killSession={this.logoutHandler} />)} />
                     </Switch>
                   </div>
                 )
@@ -107,4 +110,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default (App);
