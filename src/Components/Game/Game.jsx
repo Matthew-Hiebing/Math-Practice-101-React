@@ -1,17 +1,56 @@
 import React from 'react';
 import { Jumbotron, Button, } from 'react-bootstrap';
+import axiosInstance from '../../helpers/axiosInstance';
 
-export default class Home extends React.Component {
+export default class Game extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            logged_in: false
+            game_properties: {
+                splash_screen: {
+                    splash_screen_text: null,
+                    splash_screen_preference: false
+                },
+
+            }
         }
+    }
+
+    componentDidMount() {
+        axiosInstance.get('/api/game-properties/math')
+        .then((response) => {
+             this.setState({ game_properties: response.data });
+        });
     }
 
     loginButtonHandler = () => {
         this.setState({ logged_in: !this.state.logged_in });
+    }
+
+    splashScreenHandler = (event) => {
+        axiosInstance.post('api/user_preferences/set_preference', {
+            splash_screen_name: "Math",
+            display_on_refresh: !event.target.value
+        })
+        .then((response) => {
+
+            if (response.status === 200) {
+                this.setState({
+                    game_properties: {
+                        splash_screen: {
+                            splash_screen_preference: this.state.game_properties.splash_screen.splash_screen_preference
+                        }
+                    }
+                })
+            } else {
+                console.log(response.data)
+            }
+
+        })
+        .catch((error) => {
+            console.log(error);
+        });
     }
 
     render() {
@@ -20,11 +59,17 @@ export default class Home extends React.Component {
                 <Jumbotron>
                     <h1>Welcome to Math 101!</h1>
                     <hr className="my-4"></hr>
-                    <div className= "alert alert-primary">
-                        <p>
-                            <input type="checkbox" value="0"/> Don't show this message again.
-                        </p>
-                    </div>
+                    {
+                        (this.state.game_properties.splash_screen.splash_screen_preference) ?
+                    (
+                        <div className= "alert alert-primary">
+                            <p>{this.state.game_properties.splash_screen.splash_screen_text}</p>
+                            <p>
+                                <input name="splash" type="checkbox" value={this.state.game_properties.splash_screen.splash_screen_preference} onChange={this.splashScreenHandler} /> Don't show this message again.
+                            </p>
+                        </div>
+                    ) : (null)
+                    }
                     {
                         (this.state.logged_in) ?
                             (
