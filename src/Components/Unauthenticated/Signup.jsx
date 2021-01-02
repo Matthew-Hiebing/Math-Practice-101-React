@@ -13,8 +13,6 @@ export default class Signup extends React.Component {
             passwordConfirmation: "",
             passwordsMatch: false
         }
-
-        //this.inputFieldHandler = this.inputFieldHandler.bind(this);
     }
 
     inputFieldHandler = (event) => {

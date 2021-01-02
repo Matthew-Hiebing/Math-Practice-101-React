@@ -6,7 +6,6 @@ export default class Home extends React.Component {
         super(props);
 
         this.state = {
-            logged_in: false
         }
     }
 
@@ -23,20 +22,6 @@ export default class Home extends React.Component {
                     <p>
                         Below is a representation of your math game results.
                     </p>
-                    {
-                        (this.state.logged_in) ?
-                            (
-                                <div>
-                                    <Button id="logout" type='submit' className="btn btn-dark" onClick={this.loginButtonHandler}>Logout</Button>
-                                </div>
-                            ) :
-                            (
-                                <div>
-                                    <Button id="login" type='submit' className="btn btn-dark" onClick={this.loginButtonHandler}>Login</Button>
-                                    <Button id="signup" type='submit' className="btn btn-dark" onClick={this.loginButtonHandler}>Signup</Button>
-                                </div>
-                            )
-                    }
                 </Jumbotron>
             </div>
         );

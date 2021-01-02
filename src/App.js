@@ -54,7 +54,6 @@ class App extends React.Component {
   }
 
   render() {
-    const { match, location, history } = this.props;
     return (
       <Router>
         <div>

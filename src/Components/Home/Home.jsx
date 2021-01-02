@@ -16,12 +16,9 @@ export default class Home extends React.Component {
                     <h1>Welcome!</h1>
                     <hr className="my-2"></hr>
                     <p>
-                        Welcome to the homepage.  If you haven't already signed up for an account,
-                        please do so.  If you are not already logged in, please login to gain full
-                        access to the site.
+                        Welcome to the homepage.  If you haven't already signed up for an account, please do so.  If you are not already logged in, please login to gain full access to the site.
 
-                        If you want to test the game without creating a username and password here
-                        are some test credentials:
+                        If you want to test the game without creating your own set of credentials here is a username and password you can use.
                     </p>
                     <p>Username: userTest</p>
                     <p>Password: testPassword3456</p>

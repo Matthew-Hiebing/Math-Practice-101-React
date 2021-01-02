@@ -1,10 +1,9 @@
 import React from 'react';
-import { Jumbotron, Button, } from 'react-bootstrap';
+import { Jumbotron, Button } from 'react-bootstrap';
 
 export default class LoggedOut extends React.Component {
     constructor(props) {
         super(props);
-
     }
 
     componentDidMount() {
