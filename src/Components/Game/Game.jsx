@@ -17,15 +17,15 @@ export default class Game extends React.Component {
         }
     }
 
+    loginButtonHandler = () => {
+        this.setState({ logged_in: !this.state.logged_in });
+    }
+
     componentDidMount() {
         axiosInstance.get('/api/game-properties/math')
         .then((response) => {
              this.setState({ game_properties: response.data });
         });
-    }
-
-    loginButtonHandler = () => {
-        this.setState({ logged_in: !this.state.logged_in });
     }
 
     splashScreenHandler = (event) => {
@@ -34,7 +34,6 @@ export default class Game extends React.Component {
             display_on_refresh: !event.target.value
         })
         .then((response) => {
-
             if (response.status === 200) {
                 this.setState({
                     game_properties: {
@@ -46,7 +45,6 @@ export default class Game extends React.Component {
             } else {
                 console.log(response.data)
             }
-
         })
         .catch((error) => {
             console.log(error);
