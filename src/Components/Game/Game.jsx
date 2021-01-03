@@ -69,17 +69,17 @@ export default class Game extends React.Component {
                     ) : (null)
                     }
                     {
-                        (this.props.is_logged_in) ? // if logged in show logout button.
-                            (
-                                <div>
-                                    <Button id="logout" type='submit' className="btn btn-dark" onClick={() => this.props.history.push('/logged-out')}>Logout</Button>
-                                </div>
-                            ) : // if logged in show login button.
-                            (
-                                <div>
-                                    <Button id="login" type='submit' className="btn btn-dark" onClick={() => this.props.history.push('/login')}>Login</Button>
-                                </div>
-                            )
+                    (this.props.is_logged_in) ? // if logged in show logout button.
+                        (
+                            <div>
+                                <Button id="logout" type='submit' className="btn btn-dark" onClick={() => this.props.history.push('/logged-out')}>Logout</Button>
+                            </div>
+                        ) : // if logged in show login button.
+                        (
+                            <div>
+                                <Button id="login" type='submit' className="btn btn-dark" onClick={() => this.props.history.push('/login')}>Login</Button>
+                            </div>
+                        )
                     }
                 </Jumbotron>
             </div>

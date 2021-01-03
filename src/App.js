@@ -86,7 +86,7 @@ class App extends React.Component {
                     <Switch>
                       <Route exact path="/" component={props => (<Home {...props} {...this.state} logoutHandler={this.logoutHandler} />)} />
                       <Route path="/game" component={props => (<Game {...props} {...this.state} />)} />
-                      <Route path="/scores" component={props => (<Scores {...props} />)} />
+                      <Route path="/scores" component={props => (<Scores {...props} {...this.state} />)} />
                       <Route path="/logged-out" component={props => (<LoggedOut {...props} {...this.state} killSession={this.logoutHandler} />)} />
                     </Switch>
                   </div>

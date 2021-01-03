@@ -22,6 +22,19 @@ export default class Home extends React.Component {
                     <p>
                         Below is a representation of your math game results.
                     </p>
+                    {
+                        (this.props.is_logged_in) ? // if logged in show logout button.
+                            (
+                                <div>
+                                    <Button id="logout" type='submit' className="btn btn-dark" onClick={() => this.props.history.push('/logged-out')}>Logout</Button>
+                                </div>
+                            ) : // if logged in show login button.
+                            (
+                                <div>
+                                    <Button id="login" type='submit' className="btn btn-dark" onClick={() => this.props.history.push('/login')}>Login</Button>
+                                </div>
+                            )
+                    }
                 </Jumbotron>
             </div>
         );
