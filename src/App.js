@@ -59,7 +59,7 @@ class App extends React.Component {
         <div>
           <Container>
             {
-              (this.state.is_logged_in) ?
+              (this.state.is_logged_in) ? // if logged this navbar is rendered
               (
                   <Navbar className="navbar navbar-expand-lg navbar-dark bg-dark">
                     <div className="container">
@@ -69,7 +69,7 @@ class App extends React.Component {
                       <Link className="navbar-brand" to="/admin">Admin</Link>
                     </div>
                   </Navbar>
-              ) :
+                ) :  // if not logged this navbar is rendered
               (
                   <Navbar className="navbar navbar-expand-lg navbar-dark bg-dark">
                     <div className="container">
@@ -80,17 +80,17 @@ class App extends React.Component {
             }
 
             {
-              (this.state.is_logged_in) ? // if logged in see below
+              (this.state.is_logged_in) ? // if logged in these routes are available
                 (
                   <div>
                     <Switch>
                       <Route exact path="/" component={props => (<Home {...props} {...this.state} logoutHandler={this.logoutHandler} />)} />
-                      <Route path="/game" component={props => (<Game {...props} />)} />
+                      <Route path="/game" component={props => (<Game {...props} {...this.state} />)} />
                       <Route path="/scores" component={props => (<Scores {...props} />)} />
                       <Route path="/logged-out" component={props => (<LoggedOut {...props} {...this.state} killSession={this.logoutHandler} />)} />
                     </Switch>
                   </div>
-                ) : // else show
+                ) : // // if not logged in these routes are available
                 (
                   <div>
                     <Switch>
