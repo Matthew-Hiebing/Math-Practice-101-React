@@ -1,6 +1,6 @@
 # Python Math Game Using React
 
-Thie project was created to handle the front-end of the Python Math Game website, [here](https://math-game-practice.herokuapp.com/).
+This project was created to handle the front-end of the Python Math Game website, [here](https://math-game-practice.herokuapp.com/).
 
 It is currently under construction and still uses Django for the front-end.
 
