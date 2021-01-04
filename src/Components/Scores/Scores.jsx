@@ -22,6 +22,9 @@ export default class Home extends React.Component {
                     <p>
                         Below is a representation of your math game results.
                     </p>
+                    <p>
+                        Graph of results will show here.  Data for graph is pulled from database.
+                    </p>
                     {
                         (this.props.is_logged_in) ? // if logged in show logout button.
                             (
