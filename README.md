@@ -5,7 +5,7 @@ This project was created to handle the front-end of the Python Math Game website
 It is currently under construction and still uses Django for the front-end.
 
 ## Installation
-First install [node](https://nodejs.org/en/).  Once node is installed, install the follwoing packages:
+First install [node](https://nodejs.org/en/).  Once node is installed, install the following packages:
 
 ```bash
 npm install axios 0.21.1
