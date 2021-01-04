@@ -1,14 +1,11 @@
-import axios from 'axios';
 import React from 'react';
 import { Jumbotron, Button, Form } from 'react-bootstrap';
 import axiosInstance from '../../helpers/axiosInstance';
-import {multiplication, division, randomFunc, randomProblemGenerator} from './MathProblemGenerator';
+import {randomProblemGenerator} from './MathProblemGenerator';
 
 export default class Game extends React.Component {
     constructor(props) {
         super(props);
-
-        // this.userInput = React.createRef();
 
         this.state = {
             game_properties: {
@@ -91,7 +88,6 @@ export default class Game extends React.Component {
             console.log("Incorrect")
             tempState.game_properties.problem.status = "incorrect"
         }
-
         this.setState(tempState);
     }
 
@@ -102,17 +98,12 @@ export default class Game extends React.Component {
         tempState.game_properties.problem.user_input = input
 
         this.setState(tempState);
-        console.log(input)
     }
 
     enterPressHandler = (event) => {
-        // If the key pressed was enter
-        // Execute the checkHandlerGunction
-        // Else do nothing
+        // If the enter key is pressed, run checkButtonHandler.
         if ((event.key === 'Enter')) {
             this.checkButtonHandler()
-        } else {
-
         }
     }
 
@@ -152,42 +143,42 @@ export default class Game extends React.Component {
                     (this.props.is_logged_in) ? // if logged in show logout button.
                         (
                             <div>
-                                <Button id="startButton" type="button" className="btn btn-primary btn-lg" onClick={this.startButtonHandler}>Start</Button>
-                                <p id="math_problem">{this.state.game_properties.problem.problem_string}</p>
+                                <Button type="button" className="btn btn-primary btn-lg" onClick={this.startButtonHandler}>Start</Button>
+                                <p>{this.state.game_properties.problem.problem_string}</p>
                                 <Form.Group controlId="exampleForm.ControlInput1" >
                                         <Form.Control
-                                            ref={(input) => { this.userInput = input; }}
+                                            placeholder="Enter your answer here"
                                             name="input"
                                             type="input"
-                                            placeholder="Enter your answer here"
                                             autoComplete="off"
+                                            value={this.state.game_properties.problem.user_input}
+                                            ref={(input) => {this.userInput = input}}
                                             onChange={this.answerChangeHandler}
                                             onKeyPress={this.enterPressHandler}
-                                            value={this.state.game_properties.problem.user_input}
                                         />
                                 </Form.Group>
-                                <Button id="checkButton" type="button" className={"btn btn-lg " + (
-                                        (this.state.game_properties.problem.status === "correct") ?
-                                            ("btn-success") :
-                                            (this.state.game_properties.problem.status == "incorrect") ?
-                                                ("btn-danger") :
-                                                ("btn-primary")
+                                <Button type="button" className={"btn btn-lg " + (
+                                    (this.state.game_properties.problem.status === "correct") ?
+                                        ("btn-success") :
+                                    (this.state.game_properties.problem.status === "incorrect") ?
+                                        ("btn-danger") :
+                                        ("btn-primary")
                                 )} onClick={this.checkButtonHandler}>
-                                        {
-                                            (this.state.game_properties.problem.status === "correct") ?
-                                                ("Correct") :
-                                                (this.state.game_properties.problem.status == "incorrect") ?
-                                                    ("Incorrect") :
-                                                    ("Check")
-                                        }
+                                    {
+                                    (this.state.game_properties.problem.status === "correct") ?
+                                        ("Correct") :
+                                    (this.state.game_properties.problem.status === "incorrect") ?
+                                        ("Incorrect") :
+                                        ("Check")
+                                    }
                                 </Button>
                                 <p>Graph of results will show here.  Graph data is generated as the user plays the game.</p>
-                                <Button id="logout" type='submit' className="btn btn-dark" onClick={() => this.props.history.push('/logged-out')}>Logout</Button>
+                                <Button type="button" className="btn btn-dark" onClick={() => this.props.history.push('/logged-out')}>Logout</Button>
                             </div>
                         ) : // if not logged in show login button.
                         (
                             <div>
-                                <Button id="login" type='submit' className="btn btn-dark" onClick={() => this.props.history.push('/login')}>Login</Button>
+                                <Button type="button" className="btn btn-dark" onClick={() => this.props.history.push('/login')}>Login</Button>
                             </div>
                         )
                     }
