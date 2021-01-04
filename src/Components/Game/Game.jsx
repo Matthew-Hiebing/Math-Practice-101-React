@@ -2,7 +2,6 @@ import React from 'react';
 import { Jumbotron, Button, Form } from 'react-bootstrap';
 import axiosInstance from '../../helpers/axiosInstance';
 import {randomProblemGenerator} from './MathProblemGenerator';
-import Chart from "chart.js";
 
 export default class Game extends React.Component {
     constructor(props) {
@@ -22,9 +21,9 @@ export default class Game extends React.Component {
                     status: "not_answered"
                 },
                 chartData: {
-                    correctCounter: 0,
-                    incorrectCounter: 0,
-                    totalCounter: 0
+                    correctCounter: "",
+                    incorrectCounter: "",
+                    totalCounter: ""
                 }
             }
         }
@@ -116,13 +115,12 @@ export default class Game extends React.Component {
     }
 
     tallyBarChartData = (status) => {
-        // Tally user's current math results.  Upon refresh data is wiped.
+        // Tally user's current math results.  Data is wiped on refresh.
         let tempState = this.state;
 
         switch (status) {
             case "incorrect":
                 tempState.game_properties.chartData.incorrectCounter += 1;
-                console.log(this.incorrectCounter)
                 break;
             case "correct":
                 tempState.game_properties.chartData.correctCounter += 1;

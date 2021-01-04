@@ -2,10 +2,6 @@ import React from 'react';
 import { Jumbotron, Button } from 'react-bootstrap';
 
 export default class LoggedOut extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     componentDidMount() {
         if (this.props.is_logged_in) {
             this.props.killSession();

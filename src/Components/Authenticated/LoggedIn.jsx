@@ -2,11 +2,6 @@ import React from 'react';
 import { Jumbotron, Button, } from 'react-bootstrap';
 
 export default class LoggedIn extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
-
     render() {
         return (
             <div>

@@ -11,9 +11,7 @@ import Game from './Components/Game/Game';
 import Scores from './Components/Scores/Scores';
 import Login from './Components/Unauthenticated/Login';
 import Signup from './Components/Unauthenticated/Signup';
-import LoggedIn from './Components/Authenticated/LoggedIn';
 import LoggedOut from './Components/Authenticated/LoggedOut';
-import SignedIn from './Components/Authenticated/SignedIn';
 
 
 class App extends React.Component {
@@ -43,7 +41,7 @@ class App extends React.Component {
   componentDidMount() {
     let tempState = this.state;
     // Check if local storage has something in it because it means they are logged in
-    console.log(localStorage.getItem('access_token'))
+    // console.log(localStorage.getItem('access_token'))
     if (localStorage.getItem('access_token') && localStorage.getItem('refresh_token')) {
       tempState.is_logged_in = true;
       this.setState(tempState);
