@@ -31,7 +31,6 @@ export default class GameChart extends React.Component {
                 yaxis: {
                     showticklabels: false
                 },
-
             }
         }
     }

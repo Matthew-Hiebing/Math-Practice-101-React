@@ -102,7 +102,7 @@ export default class Game extends React.Component {
         }
         tempState.game_properties.buttonState.value = false
 
-        this.setState(tempState);
+        this.setState(tempState, this.sendMathResult());
     }
 
     answerChangeHandler = (event) => {
@@ -148,10 +148,10 @@ export default class Game extends React.Component {
             "user_answer": this.state.game_properties.problem.user_input,
             "question_status": this.state.game_properties.problem.status
         });
-        // console.log(`Axios sent math_problem: ${this.state.game_properties.problem.problem_string}`);
-        // console.log(`Axios sent true_answer: ${this.state.game_properties.problem.problem_answer}`);
-        // console.log(`Axios sent user_answer: ${this.state.game_properties.problem.user_input}`);
-        // console.log(`Axios sent question_status: ${this.state.game_properties.problem.status}`);
+        console.log(`Axios sent math_problem: ${this.state.game_properties.problem.problem_string}`);
+        console.log(`Axios sent true_answer: ${this.state.game_properties.problem.problem_answer}`);
+        console.log(`Axios sent user_answer: ${this.state.game_properties.problem.user_input}`);
+        console.log(`Axios sent question_status: ${this.state.game_properties.problem.status}`);
     }
 
     render() {
