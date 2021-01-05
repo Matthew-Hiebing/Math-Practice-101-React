@@ -1,9 +1,8 @@
 import React from 'react';
-import Chart from "chart.js";
 import { Jumbotron, Button, Form } from 'react-bootstrap';
 import axiosInstance from '../../helpers/axiosInstance';
 import {randomProblemGenerator} from './MathProblemGenerator';
-let myBarChart;
+import GameChart from './GameChart';
 
 export default class Game extends React.Component {
     constructor(props) {
@@ -26,11 +25,13 @@ export default class Game extends React.Component {
                     correctCounter: 0,
                     incorrectCounter: 0,
                     totalCounter: 0
+                },
+                buttonState: {
+                    value: false
                 }
             }
         }
     }
-
 
     componentDidMount() {
         axiosInstance.get('/api/game-properties/math')
@@ -79,6 +80,7 @@ export default class Game extends React.Component {
         tempState.game_properties.problem = { ...tempState.game_properties.problem, ...problem }
         tempState.game_properties.problem.user_input = ""
         this.userInput.focus();
+        tempState.game_properties.buttonState.value = true
 
         this.setState(tempState);
     }
@@ -98,9 +100,9 @@ export default class Game extends React.Component {
             tempState.game_properties.problem.status = "incorrect"
             this.tallyBarChartData("incorrect")
         }
-        this.setState(tempState);
+        tempState.game_properties.buttonState.value = false
 
-        this.createBarChart()
+        this.setState(tempState);
     }
 
     answerChangeHandler = (event) => {
@@ -136,50 +138,6 @@ export default class Game extends React.Component {
         tempState.game_properties.chartData.totalCounter += 1;
 
         this.setState(tempState);
-    }
-
-
-    chartRef = React.createRef();
-
-    createBarChart = () => {
-        const myChartRef = this.chartRef.current.getContext("2d");
-
-        // if (typeof myBarChart !== "undefined") myBarChart.destroy();
-
-        myBarChart = new Chart(myChartRef, {
-            type: 'horizontalBar',
-            data: {
-                labels: [
-                    `Correct: ${this.state.game_properties.chartData.correctCounter}`,
-                    `Incorrect: ${this.state.game_properties.chartData.incorrectCounter}`,
-                    `Answered: ${this.state.game_properties.chartData.totalCounter}`
-                ],
-                datasets: [{
-                    data: [
-                        this.state.game_properties.chartData.correctCounter,
-                        this.state.game_properties.chartData.incorrectCounter,
-                        this.state.game_properties.chartData.totalCounter
-                    ],
-                    backgroundColor: [
-                        'rgba(13, 222, 2, 0.2)',
-                        'rgba(250, 0, 0, 0.2)',
-                        'rgba(10, 38, 255, 0.2)',
-                    ],
-                    borderColor: [
-                        'rgba(7, 158, 0, 1)',
-                        'rgba(225, 0, 0, 1)',
-                        'rgba(30, 56, 255, 1)',
-                    ],
-                    borderWidth: 1.5
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                legend: { display: false },
-                scales: { xAxes: [{ ticks: { beginAtZero: true } }] }
-            }
-        });
     }
 
     sendMathResult = (event) => {
@@ -218,7 +176,11 @@ export default class Game extends React.Component {
                     (this.props.is_logged_in) ? // if logged in show logout button.
                         (
                             <div>
-                                <Button type="button" className="btn btn-primary btn-lg" onClick={this.startButtonHandler}>Start</Button>
+                                <Button
+                                    type="button"
+                                    disabled={this.state.game_properties.buttonState.value}
+                                    className="btn btn-primary btn-lg" onClick={this.startButtonHandler}>Start
+                                </Button>
                                 <p>{this.state.game_properties.problem.problem_string}</p>
                                 <Form.Group controlId="exampleForm.ControlInput1" >
                                         <Form.Control
@@ -250,8 +212,12 @@ export default class Game extends React.Component {
                                 <p>Correct: {this.state.game_properties.chartData.correctCounter}</p>
                                 <p>Incorrect: {this.state.game_properties.chartData.incorrectCounter}</p>
                                 <p>Total: {this.state.game_properties.chartData.totalCounter}</p>
-                                <canvas id="myChart" ref={this.chartRef}></canvas>
-                                <Button type="button" className="btn btn-dark" onClick={() => this.props.history.push('/logged-out')}>Logout</Button>
+                                <div>
+                                    <GameChart chartData={this.state.game_properties.chartData} />
+                                </div>
+                                <div>
+                                    <Button type="button" className="btn btn-dark" onClick={() => this.props.history.push('/logged-out')}>Logout</Button>
+                                </div>
                             </div>
                         ) : // if not logged in show login button.
                         (
