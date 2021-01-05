@@ -1,7 +1,9 @@
 import React from 'react';
+import Chart from "chart.js";
 import { Jumbotron, Button, Form } from 'react-bootstrap';
 import axiosInstance from '../../helpers/axiosInstance';
 import {randomProblemGenerator} from './MathProblemGenerator';
+let myBarChart;
 
 export default class Game extends React.Component {
     constructor(props) {
@@ -21,13 +23,14 @@ export default class Game extends React.Component {
                     status: "not_answered"
                 },
                 chartData: {
-                    correctCounter: "",
-                    incorrectCounter: "",
-                    totalCounter: ""
+                    correctCounter: 0,
+                    incorrectCounter: 0,
+                    totalCounter: 0
                 }
             }
         }
     }
+
 
     componentDidMount() {
         axiosInstance.get('/api/game-properties/math')
@@ -96,6 +99,8 @@ export default class Game extends React.Component {
             this.tallyBarChartData("incorrect")
         }
         this.setState(tempState);
+
+        this.createBarChart()
     }
 
     answerChangeHandler = (event) => {
@@ -133,58 +138,49 @@ export default class Game extends React.Component {
         this.setState(tempState);
     }
 
-    // updateBarChart = (chart) => {
-    //     // Update bar chart with new data after each question is checked.
-    //     chart.data.labels = [
-    //         `Correct: ${this.correctCounter}`,
-    //         `Incorrect: ${this.incorrectCounter}`,
-    //         `Total Answered: ${this.totalCounter}`];
-    //     chart.data.datasets.forEach((dataset) => {
-    //         dataset.data = [
-    //             this.correctCounter,
-    //             this.incorrectCounter,
-    //             this.totalCounter
-    //         ];
-    //     });
-    //     chart.update();
-    // }
 
-    // createBarChart = (event) => {
-    //     new Chart(ctx, {
-    //         type: 'horizontalBar',
-    //         data: {
-    //             labels: [
-    //                 `Correct: ${this.correctCounter}`,
-    //                 `Incorrect: ${this.incorrectCounter}`,
-    //                 `Answered: ${this.totalCounter}`
-    //             ],
-    //             datasets: [{
-    //                 data: [
-    //                     this.correctCounter,
-    //                     this.incorrectCounter,
-    //                     this.totalCounter
-    //                 ],
-    //                 backgroundColor: [
-    //                     'rgba(13, 222, 2, 0.2)',
-    //                     'rgba(250, 0, 0, 0.2)',
-    //                     'rgba(10, 38, 255, 0.2)',
-    //                 ],
-    //                 borderColor: [
-    //                     'rgba(7, 158, 0, 1)',
-    //                     'rgba(225, 0, 0, 1)',
-    //                     'rgba(30, 56, 255, 1)',
-    //                 ],
-    //                 borderWidth: 1.5
-    //             }]
-    //         },
-    //         options: {
-    //             responsive: true,
-    //             maintainAspectRatio: false,
-    //             legend: { display: false },
-    //             scales: { xAxes: [{ ticks: { beginAtZero: true } }] }
-    //         }
-    //     });
-    // }
+    chartRef = React.createRef();
+
+    createBarChart = () => {
+        const myChartRef = this.chartRef.current.getContext("2d");
+
+        // if (typeof myBarChart !== "undefined") myBarChart.destroy();
+
+        myBarChart = new Chart(myChartRef, {
+            type: 'horizontalBar',
+            data: {
+                labels: [
+                    `Correct: ${this.state.game_properties.chartData.correctCounter}`,
+                    `Incorrect: ${this.state.game_properties.chartData.incorrectCounter}`,
+                    `Answered: ${this.state.game_properties.chartData.totalCounter}`
+                ],
+                datasets: [{
+                    data: [
+                        this.state.game_properties.chartData.correctCounter,
+                        this.state.game_properties.chartData.incorrectCounter,
+                        this.state.game_properties.chartData.totalCounter
+                    ],
+                    backgroundColor: [
+                        'rgba(13, 222, 2, 0.2)',
+                        'rgba(250, 0, 0, 0.2)',
+                        'rgba(10, 38, 255, 0.2)',
+                    ],
+                    borderColor: [
+                        'rgba(7, 158, 0, 1)',
+                        'rgba(225, 0, 0, 1)',
+                        'rgba(30, 56, 255, 1)',
+                    ],
+                    borderWidth: 1.5
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                legend: { display: false },
+                scales: { xAxes: [{ ticks: { beginAtZero: true } }] }
+            }
+        });
+    }
 
     sendMathResult = (event) => {
         // problem_string, problem_answer, user_input, status
@@ -254,7 +250,7 @@ export default class Game extends React.Component {
                                 <p>Correct: {this.state.game_properties.chartData.correctCounter}</p>
                                 <p>Incorrect: {this.state.game_properties.chartData.incorrectCounter}</p>
                                 <p>Total: {this.state.game_properties.chartData.totalCounter}</p>
-                                <p>Graph of results will show here.  Graph data is generated as the user plays the game.</p>
+                                <canvas id="myChart" ref={this.chartRef}></canvas>
                                 <Button type="button" className="btn btn-dark" onClick={() => this.props.history.push('/logged-out')}>Logout</Button>
                             </div>
                         ) : // if not logged in show login button.
