@@ -47,8 +47,10 @@ export default class Signup extends React.Component {
         .then((response) => {
             console.log(response);
             if (response.status === 201) {
-                console.log(response.data)
-                this.props.history.push('/')
+                localStorage.setItem('access_token', response.data.access);
+                localStorage.setItem('refresh_token', response.data.refresh);
+                // this.props.history.push('/')
+                window.location.href = '/';
             } else {
                 console.log(response.data);
             }
