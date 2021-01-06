@@ -32,7 +32,6 @@ export default class Login extends React.Component {
             // Navigate to the home page
             this.props.history.push('/');
             this.props.loginHandler();
-            console.log(response);
         })
         .catch((error) => {
             console.log(error);

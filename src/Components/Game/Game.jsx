@@ -102,7 +102,7 @@ export default class Game extends React.Component {
         }
         tempState.game_properties.buttonState.value = false
 
-        this.setState(tempState, this.sendMathResult());
+        this.setState(tempState, this.sendMathResults());
     }
 
     answerChangeHandler = (event) => {
@@ -140,7 +140,7 @@ export default class Game extends React.Component {
         this.setState(tempState);
     }
 
-    sendMathResult = (event) => {
+    sendMathResults = (event) => {
         // problem_string, problem_answer, user_input, status
         axiosInstance.post('/api/scoring/submit_score_details', {
             "math_problem": this.state.game_properties.problem.problem_string,
