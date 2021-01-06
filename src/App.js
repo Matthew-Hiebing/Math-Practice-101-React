@@ -12,6 +12,7 @@ import Scores from './Components/Scores/Scores';
 import Login from './Components/Unauthenticated/Login';
 import Signup from './Components/Unauthenticated/Signup';
 import LoggedOut from './Components/Authenticated/LoggedOut';
+import axiosInstance from './helpers/axiosInstance';
 
 
 class App extends React.Component {
@@ -41,7 +42,6 @@ class App extends React.Component {
   componentDidMount() {
     let tempState = this.state;
     // Check if local storage has something in it because it means they are logged in
-    // console.log(localStorage.getItem('access_token'))
     if (localStorage.getItem('access_token') && localStorage.getItem('refresh_token')) {
       tempState.is_logged_in = true;
       this.setState(tempState);
@@ -64,7 +64,8 @@ class App extends React.Component {
                       <Link className="navbar-brand" to="/">Home</Link>
                       <Link className="navbar-brand" to="/game">Game</Link>
                       <Link className="navbar-brand" to="/scores">Scores</Link>
-                      <Link className="navbar-brand" to="/admin">Admin</Link>
+                      <a className="navbar-brand" href="http://localhost:8000/admin">Admin</a>
+                      {/* <Link className="navbar-brand" to="/admin">Admin</Link> */}
                     </div>
                   </Navbar>
                 ) :  // if not logged this navbar is rendered
