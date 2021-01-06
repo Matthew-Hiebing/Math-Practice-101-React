@@ -16,7 +16,7 @@ npm install react-router-dom 5.2.0
 npm install react-scripts 4.0.1
 npm install react 17.0.1
 npm install web-vitals 0.2.4
-npm install chart.js 2.9.4
+npm install recharts 1.8.5
 ```
 
 ## Questions?
