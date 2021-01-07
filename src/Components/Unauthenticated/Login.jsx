@@ -8,7 +8,8 @@ export default class Login extends React.Component {
 
         this.state = {
             username: "",
-            password: ""
+            password: "",
+            errors: false
         }
     }
 
@@ -34,7 +35,11 @@ export default class Login extends React.Component {
             this.props.loginHandler();
         })
         .catch((error) => {
-            console.log(error);
+            this.setState({ errors: error.response })
+            if (error.status == 401) {
+                console.log("Somethignwent wrong")
+            }
+            console.log(error.response);
         })
     }
 
@@ -44,15 +49,46 @@ export default class Login extends React.Component {
                 <Form>
                     <Form.Group controlId="formBasicUsername">
                         <Form.Label>Username</Form.Label>
-                        <Form.Control name="username" type="input" placeholder="Enter your username here" onChange={this.inputFieldHandler} />
+                        <Form.Control
+                        name="username"
+                        type="input"
+                        placeholder="Enter your username here"
+                        onChange={this.inputFieldHandler}
+                        isInvalid={!!this.state.errors} />
+                        {
+                            (!!this.state.errors) ?
+                            (
+                                <Form.Control.Feedback type="invalid">
+                                    {this.state.errors.data.detail}
+                                </Form.Control.Feedback>
+                            ) : (null)
+                        }
                     </Form.Group>
 
                     <Form.Group controlId="formBasicPassword">
                         <Form.Label>Password</Form.Label>
-                        <Form.Control name="password" type="password" placeholder="Enter your password here" onChange={this.inputFieldHandler} />
+                        <Form.Control
+                            name="password"
+                            type="input"
+                            placeholder="Enter your password here"
+                            onChange={this.inputFieldHandler}
+                            isInvalid={!!this.state.errors}
+                        />
+                        {
+                            (!!this.state.errors) ?
+                            (
+                                <Form.Control.Feedback type="invalid">
+                                    {this.state.errors.data.details}
+                                </Form.Control.Feedback>
+                            ) : (null)
+                        }
                     </Form.Group>
 
-                    <Button className="btn btn-dark" type="submit" onClick={this.loginButtonHandler}>Login</Button>
+                    <Button
+                    className="btn btn-dark"
+                    type="submit"
+                    onClick={this.loginButtonHandler}>Login
+                    </Button>
                 </Form>
             </div>
         )
