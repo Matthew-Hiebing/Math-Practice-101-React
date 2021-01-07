@@ -27,13 +27,28 @@ export default class Home extends React.Component {
                         (this.props.is_logged_in) ?
                         (
                             <div>
-                                <Button id="logout" type='submit' className="btn btn-dark" onClick={() => this.props.history.push('/logged-out')}>Logout</Button>
+                                <Button
+                                id="logout"
+                                type='submit'
+                                className="btn btn-dark"
+                                onClick={() => this.props.history.push('/logged-out')}>Logout
+                                </Button>
                             </div>
                         ) :
                         (
                             <div>
-                                <Button id="login" type='submit' className="btn btn-dark" onClick={() => this.props.history.push('/login')}>Login</Button>
-                                <Button id="signup" type='submit' className="btn btn-dark" onClick={() => this.props.history.push('/signup')}>Signup</Button>
+                                <Button
+                                id="login"
+                                type='submit'
+                                className="btn btn-dark"
+                                onClick={() => this.props.history.push('/login')}>Login
+                                </Button>
+                                <Button
+                                id="signup"
+                                type='submit'
+                                className="btn btn-dark"
+                                onClick={() => this.props.history.push('/signup')}>Signup
+                                </Button>
                             </div>
                         )
                     }

@@ -166,7 +166,12 @@ export default class Game extends React.Component {
                         <div className= "alert alert-primary">
                             <p>{this.state.game_properties.splash_screen.splash_screen_text}</p>
                             <p>
-                                <input name="splash" type="checkbox" checked={this.state.game_properties.splash_screen.checkbox_state} onChange={this.splashScreenHandler} /> Don't show this message again.
+                                <input
+                                name="splash"
+                                type="checkbox"
+                                checked={this.state.game_properties.splash_screen.checkbox_state}
+                                onChange={this.splashScreenHandler}
+                                /> Don't show this message again.
                             </p>
                         </div>
                     ) : (null) // if user does not want to see spashscreen show nothing.
@@ -216,13 +221,21 @@ export default class Game extends React.Component {
                                     <GameChart chartData={this.state.game_properties.chartData} />
                                 </div>
                                 <div>
-                                    <Button type="button" className="btn btn-dark" onClick={() => this.props.history.push('/logged-out')}>Logout</Button>
+                                    <Button
+                                    type="button"
+                                    className="btn btn-dark"
+                                    onClick={() => this.props.history.push('/logged-out')}>Logout
+                                    </Button>
                                 </div>
                             </div>
                         ) : // if not logged in show login button.
                         (
                             <div>
-                                <Button type="button" className="btn btn-dark" onClick={() => this.props.history.push('/login')}>Login</Button>
+                                <Button
+                                type="button"
+                                className="btn btn-dark"
+                                onClick={() => this.props.history.push('/login')}>Login
+                                </Button>
                             </div>
                         )
                     }

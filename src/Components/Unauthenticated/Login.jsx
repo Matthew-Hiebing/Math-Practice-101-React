@@ -70,6 +70,7 @@ export default class Login extends React.Component {
                         <Form.Control
                             name="password"
                             type="input"
+                            autoComplete="off"
                             placeholder="Enter your password here"
                             onChange={this.inputFieldHandler}
                             isInvalid={!!this.state.errors}
