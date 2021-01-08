@@ -30,7 +30,7 @@ export default class Game extends React.Component {
                     value: false
                 },
                 checkButtonState: {
-                    value: false
+                    value: true
                 },
             }
         }
@@ -74,7 +74,7 @@ export default class Game extends React.Component {
         event.preventDefault();
     }
 
-    startButtonHandler = (event) => {
+    startButtonHandler = () => {
         // Show random math problem.
         let problem = randomProblemGenerator();
         // console.log(problem);
@@ -89,18 +89,18 @@ export default class Game extends React.Component {
         this.setState(tempState);
     }
 
-    checkButtonHandler = (event) => {
+    checkButtonHandler = () => {
         // Check if user's answer is corrrect.
         let input = parseInt(this.state.game_properties.problem.user_input);
         let answer = parseInt(this.state.game_properties.problem.problem_answer);
         let tempState = this.state;
 
+        console.log(typeof this.state.game_properties.problem.user_input)
+
         if (input === answer) {
-            // console.log("Correct");
             tempState.game_properties.problem.status = "correct"
             this.tallyBarChartData("correct")
         } else {
-            // console.log("Incorrect")
             tempState.game_properties.problem.status = "incorrect"
             this.tallyBarChartData("incorrect")
         }
@@ -120,7 +120,6 @@ export default class Game extends React.Component {
     }
 
     enterPressHandler = (event) => {
-        // If the enter key is pressed, run checkButtonHandler.
         if ((event.key === 'Enter')) {
             this.checkButtonHandler()
         }
@@ -145,7 +144,7 @@ export default class Game extends React.Component {
         this.setState(tempState);
     }
 
-    sendMathResults = (event) => {
+    sendMathResults = () => {
         axiosInstance.post('/api/scoring/submit_score_details', {
             "math_problem": this.state.game_properties.problem.problem_string,
             "true_answer": this.state.game_properties.problem.problem_answer,
@@ -191,13 +190,13 @@ export default class Game extends React.Component {
                                 <Form.Group controlId="exampleForm.ControlInput1" >
                                         <Form.Control
                                             placeholder="Enter your answer here"
-                                            name="input"
                                             type="input"
                                             autoComplete="off"
                                             value={this.state.game_properties.problem.user_input}
                                             ref={(input) => {this.userInput = input}}
                                             onChange={this.answerChangeHandler}
-                                            onKeyPress={this.enterPressHandler}
+                                            // onKeyPress={this.enterPressHandler}
+                                            onSubmit={this.submitHandler}
                                         />
                                 </Form.Group>
                                 <Button
