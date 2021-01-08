@@ -218,12 +218,13 @@ export default class Game extends React.Component {
                                         ("Check")
                                     }
                                 </Button>
-                                <p>Correct: {this.state.game_properties.chartData.correctCounter}</p>
+                                {/* <p>Correct: {this.state.game_properties.chartData.correctCounter}</p>
                                 <p>Incorrect: {this.state.game_properties.chartData.incorrectCounter}</p>
-                                <p>Total: {this.state.game_properties.chartData.totalCounter}</p>
+                                <p>Total: {this.state.game_properties.chartData.totalCounter}</p> */}
                                 <div>
                                     <GameChart chartData={this.state.game_properties.chartData} />
                                 </div>
+                                <br/>
                                 <div>
                                     <Button
                                     type="button"

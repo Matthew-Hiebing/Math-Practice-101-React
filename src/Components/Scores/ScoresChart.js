@@ -1,82 +1,64 @@
 import React from 'react';
 import {
-    BarChart, Bar,
-    XAxis,
-    YAxis,
-    Legend,
+    BarChart, Bar, XAxis, Cell, YAxis, Tooltip, ResponsiveContainer,
 } from 'recharts';
 
-export default class ScoresChart extends React.Component {
+const barColors = ["#34ed4180", "#ff000080", "#1e21c980"]
+
+export default class Example extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            axes: [
-                { primary: true, type: 'ordinal', position: 'left' },
-                { position: 'bottom', type: 'linear', stacked: true }
-            ],
-            series: {
-                type: 'bar'
-            },
             chartData: [
                 {
-                    name: 'Correct', score: 0,
+                    name: "Correct",
+                    total: this.props.chartData.correctCounter
                 },
                 {
-                    name: 'Incorrect', score: 0,
+                    name: "Incorrect",
+                    total: this.props.chartData.incorrectCounter
                 },
                 {
-                    name: 'Total', score: 0,
-                },
-            ],
-            chartLayout: {
-                title: 'Math Game Results',
-                yaxis: {
-                    showticklabels: false
-                },
-            }
+                    name: "Total",
+                    total: this.props.chartData.totalCounter
+                }
+            ]
         }
     }
 
-    // componentDidUpdate(prevProps) {
-    //     if (prevProps.chartData.totalCounter !== this.state.chartData[2].score) {
-    //         let tempState = this.state;
-    //         tempState.chartData = [
-    //             {
-    //                 name: 'Correct', score: this.props.correctCounter,
-    //             },
-    //             {
-    //                 name: 'Incorrect', score: this.props.incorrectCounter,
-    //             },
-    //             {
-    //                 name: 'Total', score: this.props.totalCounter,
-    //             },
-    //         ];
-    //         this.setState(tempState);
-    //     }
-    // }
-
     render() {
         return (
-            <div>
-                {
-                    (this.state.chartData[2].score > 0) ?
-                        (<BarChart
-                            layout="horizontal"
-                            width={500}
-                            height={300}
-                            data={this.state.chartData.slice()}
-                            margin={{
-                                top: 5, right: 30, left: 20, bottom: 5,
-                            }}
-                        >
-                            <XAxis dataKey="name" />
-                            <YAxis />
-                            <Legend />
-                            <Bar dataKey="score" fill="#82ca9d" />
-                        </BarChart>) : (null)
-                }
-            </div>
+            <ResponsiveContainer width="95%" height={450}>
+                <BarChart
+                    data={this.state.chartData.slice()}
+                    margin={{ top: 20, right: 20, left: 20, bottom: 5, }}
+                    data={this.state.chartData}
+                >
+                <XAxis
+                    dataKey="name"
+                    stroke="#000000"
+                />
+                <YAxis
+                    stroke="#000000"
+                />
+                <Tooltip
+                    wrapperStyle={{ width: 100, backgroundColor: '#ccc' }}
+                    formatter={function(total) {return `${total}`}}
+                />
+                <Bar
+                    dataKey="total"
+                    stroke="#000000"
+                    strokeWidth={1}
+                >
+                    {
+                        this.state.chartData.map((entry, index) => (
+                            <Cell key={`cell-${index}`} fill={barColors[index]} />
+                        ))
+                    }
+                </Bar>
+                </BarChart>
+            </ResponsiveContainer>
         );
     }
 }

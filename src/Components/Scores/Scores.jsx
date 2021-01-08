@@ -1,7 +1,7 @@
 import React from 'react';
 import { Jumbotron, Button, } from 'react-bootstrap';
 import axiosInstance from '../../helpers/axiosInstance';
-import ScoresChartTest from './ScoresChartTest';
+import ScoresChart from './ScoresChart';
 
 export default class Home extends React.Component {
     constructor(props) {
@@ -44,7 +44,7 @@ export default class Home extends React.Component {
                                 <div>
                                     <div>
                                         {
-                                            (this.state.chartData.totalCounter > 0) ? (<ScoresChartTest chartData={this.state.chartData} />) : (null)
+                                            (this.state.chartData.totalCounter > 0) ? (<ScoresChart chartData={this.state.chartData} />) : (null)
                                         }
                                     </div>
                                     <Button
@@ -57,7 +57,12 @@ export default class Home extends React.Component {
                             ) : // if logged in show logout button.
                             (
                                 <div>
-                                    <Button id="login" type='submit' className="btn btn-dark" onClick={() => this.props.history.push('/login')}>Login</Button>
+                                    <Button
+                                    id="login"
+                                    type='submit'
+                                    className="btn btn-dark"
+                                    onClick={() => this.props.history.push('/login')}>Login
+                                    </Button>
                                 </div>
                             )
                     }
