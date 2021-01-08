@@ -36,7 +36,7 @@ export default class Login extends React.Component {
         })
         .catch((error) => {
             this.setState({ errors: error.response })
-            if (error.status == 401) {
+            if (error.status === 401) {
                 console.log("Somethignwent wrong")
             }
             console.log(error.response);
@@ -54,14 +54,16 @@ export default class Login extends React.Component {
                         type="input"
                         placeholder="Enter your username here"
                         onChange={this.inputFieldHandler}
-                        isInvalid={!!this.state.errors} />
+                        isInvalid={!!this.state.errors}
+                        />
                         {
                             (!!this.state.errors) ?
                             (
                                 <Form.Control.Feedback type="invalid">
                                     {this.state.errors.data.detail}
                                 </Form.Control.Feedback>
-                            ) : (null)
+                            ) :
+                            (null)
                         }
                     </Form.Group>
 
@@ -81,7 +83,8 @@ export default class Login extends React.Component {
                                 <Form.Control.Feedback type="invalid">
                                     {this.state.errors.data.details}
                                 </Form.Control.Feedback>
-                            ) : (null)
+                            ) :
+                            (null)
                         }
                     </Form.Group>
 

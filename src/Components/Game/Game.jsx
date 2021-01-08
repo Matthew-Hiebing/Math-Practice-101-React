@@ -26,9 +26,12 @@ export default class Game extends React.Component {
                     incorrectCounter: 0,
                     totalCounter: 0
                 },
-                buttonState: {
+                startButtonState: {
                     value: false
-                }
+                },
+                checkButtonState: {
+                    value: false
+                },
             }
         }
     }
@@ -80,7 +83,8 @@ export default class Game extends React.Component {
         tempState.game_properties.problem = { ...tempState.game_properties.problem, ...problem }
         tempState.game_properties.problem.user_input = ""
         this.userInput.focus();
-        tempState.game_properties.buttonState.value = true
+        tempState.game_properties.startButtonState.value = true
+        tempState.game_properties.checkButtonState.value = false
 
         this.setState(tempState);
     }
@@ -100,7 +104,8 @@ export default class Game extends React.Component {
             tempState.game_properties.problem.status = "incorrect"
             this.tallyBarChartData("incorrect")
         }
-        tempState.game_properties.buttonState.value = false
+        tempState.game_properties.startButtonState.value = false
+        tempState.game_properties.checkButtonState.value = true
 
         this.setState(tempState, this.sendMathResults());
     }
@@ -141,17 +146,12 @@ export default class Game extends React.Component {
     }
 
     sendMathResults = (event) => {
-        // problem_string, problem_answer, user_input, status
         axiosInstance.post('/api/scoring/submit_score_details', {
             "math_problem": this.state.game_properties.problem.problem_string,
             "true_answer": this.state.game_properties.problem.problem_answer,
             "user_answer": this.state.game_properties.problem.user_input,
             "question_status": this.state.game_properties.problem.status
         });
-        console.log(`Axios sent math_problem: ${this.state.game_properties.problem.problem_string}`);
-        console.log(`Axios sent true_answer: ${this.state.game_properties.problem.problem_answer}`);
-        console.log(`Axios sent user_answer: ${this.state.game_properties.problem.user_input}`);
-        console.log(`Axios sent question_status: ${this.state.game_properties.problem.status}`);
     }
 
     render() {
@@ -183,8 +183,9 @@ export default class Game extends React.Component {
                             <div>
                                 <Button
                                     type="button"
-                                    disabled={this.state.game_properties.buttonState.value}
-                                    className="btn btn-primary btn-lg" onClick={this.startButtonHandler}>Start
+                                    disabled={this.state.game_properties.startButtonState.value}
+                                    className="btn btn-primary btn-lg"
+                                    onClick={this.startButtonHandler}>Start
                                 </Button>
                                 <p>{this.state.game_properties.problem.problem_string}</p>
                                 <Form.Group controlId="exampleForm.ControlInput1" >
@@ -199,13 +200,17 @@ export default class Game extends React.Component {
                                             onKeyPress={this.enterPressHandler}
                                         />
                                 </Form.Group>
-                                <Button type="button" className={"btn btn-lg " + (
+                                <Button
+                                type="button"
+                                disabled={this.state.game_properties.checkButtonState.value}
+                                className={"btn btn-lg " + (
                                     (this.state.game_properties.problem.status === "correct") ?
                                         ("btn-success") :
                                     (this.state.game_properties.problem.status === "incorrect") ?
                                         ("btn-danger") :
                                         ("btn-primary")
-                                )} onClick={this.checkButtonHandler}>
+                                )}
+                                onClick={this.checkButtonHandler}>
                                     {
                                     (this.state.game_properties.problem.status === "correct") ?
                                         ("Correct") :
