@@ -185,14 +185,15 @@ export default class Game extends React.Component {
                     {
                     (this.props.is_logged_in) ? // if logged in show logout button.
                         (
-                            <div>
+                            <div class="col text-center">
                                 <Button
+                                    id="startNewProblemButton"
                                     type="button"
                                     disabled={this.state.game_properties.startButtonState.value}
                                     className="btn btn-primary btn-lg"
                                     onClick={this.startButtonHandler}>{this.state.game_properties.startButtonState.text}
                                 </Button>
-                                <p>{this.state.game_properties.problem.problem_string}</p>
+                                <p id="problemText">{this.state.game_properties.problem.problem_string}</p>
                                 <Form.Group controlId="exampleForm.ControlInput1" >
                                         <Form.Control
                                             placeholder="Enter your answer here"
@@ -206,29 +207,30 @@ export default class Game extends React.Component {
                                         />
                                 </Form.Group>
                                 <Button
-                                type="button"
-                                disabled={this.state.game_properties.checkButtonState.value}
-                                className={"btn btn-lg " + (
-                                    (this.state.game_properties.problem.status === "correct") ?
-                                        ("btn-success") :
-                                    (this.state.game_properties.problem.status === "incorrect") ?
-                                        ("btn-danger") :
-                                        ("btn-primary")
-                                )}
-                                onClick={this.checkButtonHandler}>
-                                    {
-                                    (this.state.game_properties.problem.status === "correct") ?
-                                        ("Correct") :
-                                    (this.state.game_properties.problem.status === "incorrect") ?
-                                        ("Incorrect") :
-                                        ("Check")
-                                    }
+                                    id="checkButton"
+                                    type="button"
+                                    disabled={this.state.game_properties.checkButtonState.value}
+                                    className={"btn btn-lg " + (
+                                        (this.state.game_properties.problem.status === "correct") ?
+                                            ("btn-success") :
+                                        (this.state.game_properties.problem.status === "incorrect") ?
+                                            ("btn-danger") :
+                                            ("btn-primary")
+                                    )}
+                                    onClick={this.checkButtonHandler}>
+                                        {
+                                        (this.state.game_properties.problem.status === "correct") ?
+                                            ("Correct") :
+                                        (this.state.game_properties.problem.status === "incorrect") ?
+                                            ("Incorrect") :
+                                            ("Check")
+                                        }
                                 </Button>
                                 <div>
                                     <GameChart chartData={this.state.game_properties.chartData} />
                                 </div>
                                 <br/>
-                                <div>
+                                <div class="text-left">
                                     <Button
                                     type="button"
                                     className="btn btn-dark"
@@ -238,7 +240,7 @@ export default class Game extends React.Component {
                             </div>
                         ) : // if not logged in show login button.
                         (
-                            <div>
+                            <div class="text-left">
                                 <Button
                                 type="button"
                                 className="btn btn-dark"

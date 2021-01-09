@@ -28,26 +28,26 @@ export default class Home extends React.Component {
                         (
                             <div>
                                 <Button
-                                id="logout"
-                                type='submit'
-                                className="btn btn-dark"
-                                onClick={() => this.props.history.push('/logged-out')}>Logout
+                                    id="logout"
+                                    type='submit'
+                                    className="btn btn-dark"
+                                    onClick={() => this.props.history.push('/logged-out')}>Logout
                                 </Button>
                             </div>
                         ) :
                         (
                             <div>
                                 <Button
-                                id="login"
-                                type='submit'
-                                className="btn btn-dark"
-                                onClick={() => this.props.history.push('/login')}>Login
+                                    id="login"
+                                    type='submit'
+                                    className="btn btn-dark"
+                                    onClick={() => this.props.history.push('/login')}>Login
                                 </Button>
                                 <Button
-                                id="signup"
-                                type='submit'
-                                className="btn btn-dark"
-                                onClick={() => this.props.history.push('/signup')}>Signup
+                                    id="signup"
+                                    type='submit'
+                                    className="btn btn-dark"
+                                    onClick={() => this.props.history.push('/signup')}>Signup
                                 </Button>
                             </div>
                         )
