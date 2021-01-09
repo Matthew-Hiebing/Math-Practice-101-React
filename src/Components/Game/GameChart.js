@@ -85,8 +85,8 @@ export default class GameChart extends React.Component {
                                 </Bar>
                             </BarChart>
                         </ResponsiveContainer>
-                        ):
-                        (null)
+                    ):
+                (null)
                 }
             </div>
         );

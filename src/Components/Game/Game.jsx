@@ -144,7 +144,7 @@ export default class Game extends React.Component {
         this.setState(tempState);
     }
 
-    changeButtonText = (text) => {
+    changeButtonText = () => {
         let tempState = this.state;
         tempState.game_properties.startButtonState.text = "New Problem"
         this.setState(tempState);
@@ -164,7 +164,7 @@ export default class Game extends React.Component {
             <div>
                 <Jumbotron>
                     <h1>Welcome to Math 101!</h1>
-                    <hr className="my-4"></hr>
+                    <hr className="my-2"></hr>
                     {
                     (this.state.game_properties.splash_screen.splash_screen_preference) ? // if user wants to see splash screen show splash screen.
                     (
