@@ -12,7 +12,6 @@ import Scores from './Components/Scores/Scores';
 import Login from './Components/Unauthenticated/Login';
 import Signup from './Components/Unauthenticated/Signup';
 import LoggedOut from './Components/Authenticated/LoggedOut';
-import axiosInstance from './helpers/axiosInstance';
 
 
 class App extends React.Component {

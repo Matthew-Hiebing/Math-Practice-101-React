@@ -27,7 +27,8 @@ export default class Game extends React.Component {
                     totalCounter: 0
                 },
                 startButtonState: {
-                    value: false
+                    value: false,
+                    text: "Start"
                 },
                 checkButtonState: {
                     value: true
@@ -77,7 +78,6 @@ export default class Game extends React.Component {
     startButtonHandler = () => {
         // Show random math problem.
         let problem = randomProblemGenerator();
-        // console.log(problem);
         let tempState = this.state;
         tempState.game_properties.problem.status = "not_answered"
         tempState.game_properties.problem = { ...tempState.game_properties.problem, ...problem }
@@ -86,7 +86,7 @@ export default class Game extends React.Component {
         tempState.game_properties.startButtonState.value = true
         tempState.game_properties.checkButtonState.value = false
 
-        this.setState(tempState);
+        this.setState(tempState, this.changeButtonText());
     }
 
     checkButtonHandler = () => {
@@ -144,6 +144,12 @@ export default class Game extends React.Component {
         this.setState(tempState);
     }
 
+    changeButtonText = (text) => {
+        let tempState = this.state;
+        tempState.game_properties.startButtonState.text = "New Problem"
+        this.setState(tempState);
+    }
+
     sendMathResults = () => {
         axiosInstance.post('/api/scoring/submit_score_details', {
             "math_problem": this.state.game_properties.problem.problem_string,
@@ -184,7 +190,7 @@ export default class Game extends React.Component {
                                     type="button"
                                     disabled={this.state.game_properties.startButtonState.value}
                                     className="btn btn-primary btn-lg"
-                                    onClick={this.startButtonHandler}>Start
+                                    onClick={this.startButtonHandler}>{this.state.game_properties.startButtonState.text}
                                 </Button>
                                 <p>{this.state.game_properties.problem.problem_string}</p>
                                 <Form.Group controlId="exampleForm.ControlInput1" >
@@ -218,9 +224,6 @@ export default class Game extends React.Component {
                                         ("Check")
                                     }
                                 </Button>
-                                {/* <p>Correct: {this.state.game_properties.chartData.correctCounter}</p>
-                                <p>Incorrect: {this.state.game_properties.chartData.incorrectCounter}</p>
-                                <p>Total: {this.state.game_properties.chartData.totalCounter}</p> */}
                                 <div>
                                     <GameChart chartData={this.state.game_properties.chartData} />
                                 </div>

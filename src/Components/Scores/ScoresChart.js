@@ -33,7 +33,6 @@ export default class Example extends React.Component {
                 <BarChart
                     data={this.state.chartData.slice()}
                     margin={{ top: 20, right: 20, left: 20, bottom: 5, }}
-                    data={this.state.chartData}
                 >
                 <XAxis
                     dataKey="name"
