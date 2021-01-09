@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-    ResponsiveContainer, BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
+    ResponsiveContainer, BarChart, Bar, Cell, XAxis, YAxis, Tooltip,
 } from 'recharts';
 
 const barColors = ["#34ed4180", "#ff000080", "#1e21c980"]
@@ -10,13 +10,6 @@ export default class GameChart extends React.Component {
         super(props);
 
         this.state = {
-            axes: [
-                { primary: true, type: 'ordinal', position: 'left' },
-                { position: 'bottom', type: 'linear', stacked: true }
-            ],
-            series: {
-                type: 'bar'
-            },
             chartData: [
                 {
                     name: 'Correct',
@@ -30,13 +23,7 @@ export default class GameChart extends React.Component {
                     name: 'Total',
                     total: 0,
                 },
-            ],
-            chartLayout: {
-                title: 'Math Game Results',
-                yaxis: {
-                    showticklabels: false
-                },
-            }
+            ]
         }
     }
 
