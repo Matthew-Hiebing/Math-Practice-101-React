@@ -45,16 +45,16 @@ export default class Login extends React.Component {
 
     render () {
         return (
-            <div>
+            <div class="jumbotron">
                 <Form>
                     <Form.Group controlId="formBasicUsername">
                         <Form.Label>Username</Form.Label>
                         <Form.Control
-                        name="username"
-                        type="input"
-                        placeholder="Enter your username here"
-                        onChange={this.inputFieldHandler}
-                        isInvalid={!!this.state.errors}
+                            name="username"
+                            type="input"
+                            placeholder="Enter your username here"
+                            onChange={this.inputFieldHandler}
+                            isInvalid={!!this.state.errors}
                         />
                         {
                             (!!this.state.errors) ?
@@ -89,9 +89,9 @@ export default class Login extends React.Component {
                     </Form.Group>
 
                     <Button
-                    className="btn btn-dark"
-                    type="submit"
-                    onClick={this.loginButtonHandler}>Login
+                        className="btn btn-dark"
+                        type="submit"
+                        onClick={this.loginButtonHandler}>Login
                     </Button>
                 </Form>
             </div>
