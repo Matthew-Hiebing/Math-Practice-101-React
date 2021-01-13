@@ -18,6 +18,7 @@ export default class Game extends React.Component {
                 problem: {
                     problem_string: "Press START to begin",
                     problem_answer: null,
+                    show_answer: "",
                     user_input: "",
                     status: "not_answered"
                 },
@@ -82,6 +83,7 @@ export default class Game extends React.Component {
         tempState.game_properties.problem.status = "not_answered"
         tempState.game_properties.problem = { ...tempState.game_properties.problem, ...problem }
         tempState.game_properties.problem.user_input = ""
+        tempState.game_properties.problem.show_answer = false
         this.userInput.focus();
         tempState.game_properties.startButtonState.value = true
         tempState.game_properties.checkButtonState.value = false
@@ -103,6 +105,7 @@ export default class Game extends React.Component {
         } else {
             tempState.game_properties.problem.status = "incorrect"
             this.tallyBarChartData("incorrect")
+            tempState.game_properties.problem.show_answer = `Sorry, the correct answer is ${this.state.game_properties.problem.problem_answer}!`
         }
         tempState.game_properties.startButtonState.value = false
         tempState.game_properties.checkButtonState.value = true
@@ -194,6 +197,7 @@ export default class Game extends React.Component {
                                     onClick={this.startButtonHandler}>{this.state.game_properties.startButtonState.text}
                                 </Button>
                                 <p id="problemText">{this.state.game_properties.problem.problem_string}</p>
+                                <p id="problemAnswer">{this.state.game_properties.problem.show_answer}</p>
                                 <Form.Group controlId="exampleForm.ControlInput1" >
                                         <Form.Control
                                             placeholder="Enter your answer here"

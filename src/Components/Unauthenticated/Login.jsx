@@ -37,7 +37,7 @@ export default class Login extends React.Component {
         .catch((error) => {
             this.setState({ errors: error.response })
             if (error.status === 401) {
-                console.log("Somethignwent wrong")
+                console.log("Something went wrong")
             }
             console.log(error.response);
         })
@@ -71,7 +71,7 @@ export default class Login extends React.Component {
                         <Form.Label>Password</Form.Label>
                         <Form.Control
                             name="password"
-                            type="input"
+                            type="password"
                             autoComplete="off"
                             placeholder="Enter your password here"
                             onChange={this.inputFieldHandler}

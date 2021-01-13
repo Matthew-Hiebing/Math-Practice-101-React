@@ -22,7 +22,6 @@ export default class Home extends React.Component {
                     </p>
                     <p>Username: userTest</p>
                     <p>Password: testPassword3456</p>
-
                     {
                         (this.props.is_logged_in) ?
                         (

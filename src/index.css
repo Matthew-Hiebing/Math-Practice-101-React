@@ -16,7 +16,11 @@
 @media screen and (min-width: 601px) {
   #problemText {
     color: #036daa;
-    font-size: 4vw;
+    font-size: 5vw;
+}
+  #problemAnswer {
+    color: #036daa;
+    font-size: 1vw;
 }
 }
 
@@ -25,5 +29,9 @@
   #problemText {
     color: #036daa;
     font-size: 12vw;
+}
+  #problemAnswer {
+    color: #036daa;
+    font-size: 4vw;
 }
 }
