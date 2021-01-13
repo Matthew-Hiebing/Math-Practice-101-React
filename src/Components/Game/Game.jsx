@@ -3,6 +3,8 @@ import { Jumbotron, Button, Form } from 'react-bootstrap';
 import axiosInstance from '../../helpers/axiosInstance';
 import {randomProblemGenerator} from './MathProblemGenerator';
 import GameChart from './GameChart';
+import answerValidator from './Game';
+
 
 export default class Game extends React.Component {
     constructor(props) {
@@ -117,6 +119,13 @@ export default class Game extends React.Component {
         // Grab the user's answer string.
         let input = event.target.value
         let tempState = this.state;
+
+        // Call the validator function
+
+        // If the validity is false validator will provide error message
+        // Show the error message using a bootstrap alert
+        // Prevent user from submitting by disabling check button until validation error is gone
+
         tempState.game_properties.problem.user_input = input
 
         this.setState(tempState);
