@@ -12,13 +12,18 @@ import Scores from './Components/Scores/Scores';
 import Login from './Components/Unauthenticated/Login';
 import Signup from './Components/Unauthenticated/Signup';
 import LoggedOut from './Components/Authenticated/LoggedOut';
+import moment from 'moment'
 
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      is_logged_in: false
+      is_logged_in: false,
+      user_payload: {
+
+      }
+
     }
   }
 
@@ -43,6 +48,17 @@ class App extends React.Component {
     // Check if local storage has something in it because it means they are logged in
     if (localStorage.getItem('access_token') && localStorage.getItem('refresh_token')) {
       tempState.is_logged_in = true;
+
+      // Grab the newly stored token
+      const accessToken = localStorage.getItem('access_token')
+      // Decode it by spliting..
+      let tokenPayload = JSON.parse(atob(accessToken.split(".")[1]))
+      // Create a new key in state user_parameters { username: "Matt Hiebing" }
+      tokenPayload.last_login = moment(tokenPayload.last_login).format("dddd, MMMM Do YYYY, h:mm:ss a");
+      console.log(tokenPayload);
+
+      tempState.user_payload = tokenPayload
+
       this.setState(tempState);
     } else {
       tempState.is_logged_in = false;
@@ -63,8 +79,14 @@ class App extends React.Component {
                       <Link className="navbar-brand" to="/">Home</Link>
                       <Link className="navbar-brand" to="/game">Game</Link>
                       <Link className="navbar-brand" to="/scores">Scores</Link>
-                      <a className="navbar-brand" href="http://localhost:8000/admin">Admin</a>
-                      {/* <Link className="navbar-brand" to="/admin">Admin</Link> */}
+                      {
+                        (!!this.state.user_payload) ?
+                        (
+                          (this.state.user_payload.is_staff) ?
+                            (<a className="navbar-brand" href="http://localhost:8000/admin">Admin</a>) :
+                            (null)
+                        ) : null
+                      }
                     </div>
                   </Navbar>
                 ) :  // if not logged this navbar is rendered
