@@ -1,6 +1,12 @@
 import React from 'react';
 import {
-    BarChart, Bar, XAxis, Cell, YAxis, Tooltip, ResponsiveContainer,
+    BarChart,
+    Bar,
+    XAxis,
+    Cell,
+    YAxis,
+    Tooltip,
+    ResponsiveContainer,
 } from 'recharts';
 
 const barColors = ["#34ed4180", "#ff000080", "#1e21c980"]

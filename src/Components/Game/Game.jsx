@@ -1,9 +1,9 @@
 import React from 'react';
 import { Jumbotron, Button, Form } from 'react-bootstrap';
+import { randomProblemGenerator } from './MathProblemGenerator';
 import axiosInstance from '../../helpers/axiosInstance';
-import {randomProblemGenerator} from './MathProblemGenerator';
 import GameChart from './GameChart';
-import answerValidator from './Game';
+import answerValidator from '../../helpers/formValidation';
 
 
 export default class Game extends React.Component {
@@ -121,7 +121,7 @@ export default class Game extends React.Component {
         let tempState = this.state;
 
         // Call the validator function
-
+        answerValidator(input)
         // If the validity is false validator will provide error message
         // Show the error message using a bootstrap alert
         // Prevent user from submitting by disabling check button until validation error is gone
