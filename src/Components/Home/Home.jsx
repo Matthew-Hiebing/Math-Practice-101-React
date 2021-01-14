@@ -20,13 +20,11 @@ export default class Home extends React.Component {
 
                         If you want to test the game without creating your own set of credentials here is a username and password you can use.
                     </p>
-                    <p>Username: userTest</p>
-                    <p>Password: testPassword3456</p>
-                    <p>{ this.props.user_payload.last_login }</p>
                     {
                         (this.props.is_logged_in) ?
                         (
                             <div>
+                                <p>{this.props.user_payload.username} last logged in on {this.props.user_payload.last_login}</p>
                                 <Button
                                     id="logout"
                                     type='submit'

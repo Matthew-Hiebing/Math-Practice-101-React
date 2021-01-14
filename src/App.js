@@ -20,10 +20,8 @@ class App extends React.Component {
     super(props);
     this.state = {
       is_logged_in: false,
-      user_payload: {
-
-      }
-
+      user_payload: {},
+      // username: ""
     }
   }
 
@@ -51,16 +49,17 @@ class App extends React.Component {
 
       // Grab the newly stored token
       const accessToken = localStorage.getItem('access_token')
-      // Decode it by spliting..
+
+      // Decode it by spliting.
       let tokenPayload = JSON.parse(atob(accessToken.split(".")[1]))
-      // Create a new key in state user_parameters { username: "Matt Hiebing" }
+
+      // Get the last login date and time from the current user.
       tokenPayload.last_login = moment(tokenPayload.last_login).format("dddd, MMMM Do YYYY, h:mm:ss a");
-      console.log(tokenPayload);
 
       tempState.user_payload = tokenPayload
 
       this.setState(tempState);
-    } else {
+    }else {
       tempState.is_logged_in = false;
       this.setState(tempState);
     }
