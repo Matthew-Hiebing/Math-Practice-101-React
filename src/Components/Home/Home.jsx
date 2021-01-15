@@ -10,21 +10,40 @@ export default class Home extends React.Component {
     }
 
     render() {
+        let headerClass = ["col-sm", "pull-right"]
         return(
             <div>
                 <Jumbotron>
-                    <h1>Welcome!</h1>
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-sm">
+                                <h1>Welcome!</h1>
+                            </div>
+                            <div className={headerClass}>
+                                {
+                                    (this.props.is_logged_in) ?
+                                    (
+                                        <p>{this.props.user_payload.username} last logged in on {this.props.user_payload.last_login}</p>
+                                    ) :
+                                    (
+                                        <p>There is no current user.</p>
+                                    )
+                                }
+                            </div>
+                        </div>
+                    </div>
                     <hr className="my-2"></hr>
                     <p>
                         Welcome to the homepage.  If you haven't already signed up for an account, please do so.  If you are not already logged in, please login to gain full access to the site.
 
                         If you want to test the game without creating your own set of credentials here is a username and password you can use.
                     </p>
+                    <p>userTest</p>
+                    <p>difficultPassword23</p>
                     {
                         (this.props.is_logged_in) ?
                         (
                             <div>
-                                <p>{this.props.user_payload.username} last logged in on {this.props.user_payload.last_login}</p>
                                 <Button
                                     id="logout"
                                     type='submit'

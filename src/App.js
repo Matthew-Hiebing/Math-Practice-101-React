@@ -12,7 +12,7 @@ import Scores from './Components/Scores/Scores';
 import Login from './Components/Unauthenticated/Login';
 import Signup from './Components/Unauthenticated/Signup';
 import LoggedOut from './Components/Authenticated/LoggedOut';
-import moment from 'moment'
+import payloadParser from './helpers/payloadParser';
 
 
 class App extends React.Component {
@@ -21,14 +21,13 @@ class App extends React.Component {
     this.state = {
       is_logged_in: false,
       user_payload: {},
-      // username: ""
     }
   }
 
   logoutHandler = () => {
     let tempState = this.state;
     tempState.is_logged_in = false;
-
+    tempState.user_payload = {}
     localStorage.clear()
 
     this.setState(tempState);
@@ -37,6 +36,8 @@ class App extends React.Component {
   loginHandler = () => {
     let tempState = this.state;
     tempState.is_logged_in = true;
+
+    tempState.user_payload = payloadParser();
 
     this.setState(tempState);
   }
@@ -47,16 +48,7 @@ class App extends React.Component {
     if (localStorage.getItem('access_token') && localStorage.getItem('refresh_token')) {
       tempState.is_logged_in = true;
 
-      // Grab the newly stored token
-      const accessToken = localStorage.getItem('access_token')
-
-      // Decode it by spliting.
-      let tokenPayload = JSON.parse(atob(accessToken.split(".")[1]))
-
-      // Get the last login date and time from the current user.
-      tokenPayload.last_login = moment(tokenPayload.last_login).format("dddd, MMMM Do YYYY, h:mm:ss a");
-
-      tempState.user_payload = tokenPayload
+      tempState.user_payload = payloadParser();
 
       this.setState(tempState);
     }else {

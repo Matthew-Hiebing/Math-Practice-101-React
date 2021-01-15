@@ -4,6 +4,8 @@ import { randomProblemGenerator } from './MathProblemGenerator';
 import axiosInstance from '../../helpers/axiosInstance';
 import GameChart from './GameChart';
 import answerValidator from '../../helpers/formValidation';
+import FormErrors from './FormErrors';
+import _ from 'lodash'
 
 
 export default class Game extends React.Component {
@@ -36,6 +38,7 @@ export default class Game extends React.Component {
                 checkButtonState: {
                     value: true
                 },
+                answerFieldErrors: null
             }
         }
     }
@@ -99,7 +102,6 @@ export default class Game extends React.Component {
         let answer = parseInt(this.state.game_properties.problem.problem_answer);
         let tempState = this.state;
 
-        console.log(typeof this.state.game_properties.problem.user_input)
 
         if (input === answer) {
             tempState.game_properties.problem.status = "correct"
@@ -120,13 +122,14 @@ export default class Game extends React.Component {
         let input = event.target.value
         let tempState = this.state;
 
-        // Call the validator function
-        answerValidator(input)
-        // If the validity is false validator will provide error message
-        // Show the error message using a bootstrap alert
-        // Prevent user from submitting by disabling check button until validation error is gone
-
+        tempState.game_properties.answerFieldErrors = answerValidator(input)
         tempState.game_properties.problem.user_input = input
+        console.log(input)
+        if (_.isEmpty(tempState.game_properties.answerFieldErrors)) {
+            tempState.game_properties.checkButtonState.value = true
+        } else if (_.isEmpty(input)) {
+            tempState.game_properties.checkButtonState.value = false
+        }
 
         this.setState(tempState);
     }
@@ -197,7 +200,8 @@ export default class Game extends React.Component {
                     {
                     (this.props.is_logged_in) ? // if logged in show logout button.
                         (
-                            <div class="col text-center">
+                            <div className="col text-center">
+                                <FormErrors formErrors={this.state.game_properties.answerFieldErrors}/>
                                 <Button
                                     id="startNewProblemButton"
                                     type="button"
@@ -243,7 +247,7 @@ export default class Game extends React.Component {
                                     <GameChart chartData={this.state.game_properties.chartData} />
                                 </div>
                                 <br/>
-                                <div class="text-left">
+                                <div className="text-left">
                                     <Button
                                     type="button"
                                     className="btn btn-dark"
@@ -253,7 +257,7 @@ export default class Game extends React.Component {
                             </div>
                         ) : // if not logged in show login button.
                         (
-                            <div class="text-left">
+                            <div className="text-left">
                                 <Button
                                 type="button"
                                 className="btn btn-dark"
