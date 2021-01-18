@@ -22,7 +22,6 @@ function answerValidator(user_input) {
         }
     }
 
-
     let constraints = {
         mathGameinput: {
             length: {
@@ -36,8 +35,6 @@ function answerValidator(user_input) {
 
         }
     };
-
-
 
     let validationErrors = validate({ mathGameinput: user_input }, constraints, { format: "detailed", fullMessages: false });
 
