@@ -32,11 +32,12 @@ function answerValidator(user_input) {
             decimalAbscence: {},
             emptyString: {},
             numericality : {},
+            presence: { allowEmpty: false}
 
         }
     };
 
-    let validationErrors = validate({ mathGameinput: user_input }, constraints, { format: "detailed", fullMessages: false });
+    let validationErrors = validate({ mathGameinput: user_input }, constraints, { format: "detailed", fullMessages: false, presence: true });
 
     if (validationErrors !== undefined) {
         return validationErrors

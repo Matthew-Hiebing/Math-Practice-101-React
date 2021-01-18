@@ -50,8 +50,15 @@ export default class Game extends React.Component {
             tempState.game_properties.splash_screen.splash_screen_text = response.data.splash_screen.splash_screen_text;
             tempState.game_properties.splash_screen.splash_screen_preference = response.data.splash_screen.splash_screen_preference;
 
-            this.setState(tempState);
+            this.setState(tempState, this.validateInput());
+
         });
+    }
+
+    validateInput = () => {
+        let tempState = this.state;
+        tempState.game_properties.answerFieldErrors = answerValidator(this.state.game_properties.problem.user_input);
+        this.setState(tempState)
     }
 
     loginButtonHandler = () => {
@@ -124,9 +131,9 @@ export default class Game extends React.Component {
 
         tempState.game_properties.answerFieldErrors = answerValidator(input)
         tempState.game_properties.problem.user_input = input
-        console.log(input)
+
         if (_.isEmpty(tempState.game_properties.answerFieldErrors)) {
-            tempState.game_properties.checkButtonState.value = true
+            tempState.game_properties.checkButtonState.value = false
         } else if (_.isEmpty(input)) {
             tempState.game_properties.checkButtonState.value = false
         }
@@ -226,7 +233,7 @@ export default class Game extends React.Component {
                                 <Button
                                     id="checkButton"
                                     type="button"
-                                    disabled={this.state.game_properties.checkButtonState.value}
+                                    disabled={!!this.state.game_properties.answerFieldErrors}
                                     className={"btn btn-lg " + (
                                         (this.state.game_properties.problem.status === "correct") ?
                                             ("btn-success") :
