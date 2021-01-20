@@ -141,11 +141,11 @@ export default class Game extends React.Component {
         this.setState(tempState);
     }
 
-    enterPressHandler = (event) => {
-        if ((event.key === 'Enter')) {
-            this.checkButtonHandler()
-        }
-    }
+    // enterPressHandler = (event) => {
+    //     if ((event.key === 'Enter')) {
+    //         this.checkButtonHandler()
+    //     }
+    // }
 
     tallyBarChartData = (status) => {
         // Tally user's current math results.  Data is wiped on refresh.
