@@ -32,7 +32,7 @@ function answerValidator(user_input) {
             decimalAbscence: {},
             emptyString: {},
             numericality : {},
-            presence: { allowEmpty: false}
+            presence: { allowEmpty: false, message: "Answer field cannot be blank!" }
 
         }
     };

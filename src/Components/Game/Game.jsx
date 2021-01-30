@@ -38,7 +38,10 @@ export default class Game extends React.Component {
                 checkButtonState: {
                     value: true
                 },
-                answerFieldErrors: null
+                answerFieldErrors: null,
+                answerFieldState: {
+                    value: true
+                }
             }
         }
     }
@@ -97,8 +100,9 @@ export default class Game extends React.Component {
         tempState.game_properties.problem.user_input = ""
         tempState.game_properties.problem.show_answer = false
         this.userInput.focus();
-        tempState.game_properties.startButtonState.value = true
-        tempState.game_properties.checkButtonState.value = false
+        tempState.game_properties.startButtonState.value = true;
+        tempState.game_properties.checkButtonState.value = true;
+        tempState.game_properties.answerFieldState.value = false;
 
         this.setState(tempState, this.changeButtonText());
     }
@@ -119,7 +123,8 @@ export default class Game extends React.Component {
             tempState.game_properties.problem.show_answer = `Sorry, the correct answer is ${this.state.game_properties.problem.problem_answer}!`
         }
         tempState.game_properties.startButtonState.value = false
-        tempState.game_properties.checkButtonState.value = true
+        tempState.game_properties.checkButtonState.value = true;
+        tempState.game_properties.answerFieldState.value = true;
 
         this.setState(tempState, this.sendMathResults());
     }
@@ -134,8 +139,12 @@ export default class Game extends React.Component {
 
         if (_.isEmpty(tempState.game_properties.answerFieldErrors)) {
             tempState.game_properties.checkButtonState.value = false
+        } else if (!_.isEmpty(tempState.game_properties.answerFieldErrors)) {
+            tempState.game_properties.checkButtonState.value = true;
         } else if (_.isEmpty(input)) {
-            tempState.game_properties.checkButtonState.value = false
+            tempState.game_properties.checkButtonState.value = true;
+        } else {
+            tempState.game_properties.checkButtonState.value = false;
         }
 
         this.setState(tempState);
@@ -208,7 +217,6 @@ export default class Game extends React.Component {
                     (this.props.is_logged_in) ? // if logged in show logout button.
                         (
                             <div className="col text-center">
-                                <FormErrors formErrors={this.state.game_properties.answerFieldErrors}/>
                                 <Button
                                     id="startNewProblemButton"
                                     type="button"
@@ -228,29 +236,31 @@ export default class Game extends React.Component {
                                             onChange={this.answerChangeHandler}
                                             // onKeyPress={this.enterPressHandler}
                                             onSubmit={this.submitHandler}
+                                            disabled={this.state.game_properties.answerFieldState.value}
                                         />
                                 </Form.Group>
                                 <Button
                                     id="checkButton"
                                     type="button"
-                                    disabled={!!this.state.game_properties.answerFieldErrors}
+                                    disabled={this.state.game_properties.checkButtonState.value}
                                     className={"btn btn-lg " + (
                                         (this.state.game_properties.problem.status === "correct") ?
-                                            ("btn-success") :
+                                        ("btn-success") :
                                         (this.state.game_properties.problem.status === "incorrect") ?
                                             ("btn-danger") :
                                             ("btn-primary")
-                                    )}
+                                            )}
                                     onClick={this.checkButtonHandler}>
                                         {
                                         (this.state.game_properties.problem.status === "correct") ?
                                             ("Correct") :
                                         (this.state.game_properties.problem.status === "incorrect") ?
-                                            ("Incorrect") :
-                                            ("Check")
+                                        ("Incorrect") :
+                                        ("Check")
                                         }
                                 </Button>
                                 <div>
+                                    <FormErrors formErrors={this.state.game_properties.answerFieldErrors}/>
                                     <GameChart chartData={this.state.game_properties.chartData} />
                                 </div>
                                 <br/>
