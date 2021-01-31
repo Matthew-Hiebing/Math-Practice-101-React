@@ -74,7 +74,7 @@ class App extends React.Component {
                         (!!this.state.user_payload) ?
                         (
                           (this.state.user_payload.is_staff) ?
-                            (<a className="navbar-brand" href="http://localhost:8000/admin">Admin</a>) :
+                              (<a className="navbar-brand" href="https://math-game-react-backend.herokuapp.com/admin">Admin</a>) :
                             (null)
                         ) : null
                       }

@@ -40,7 +40,7 @@ export default class Signup extends React.Component {
 
     submitButtonHandler = (event) => {
         event.preventDefault();
-        axios.post('http://localhost:8000/accounts/signup/', {
+        axios.post('https://math-game-react-backend.herokuapp.com/accounts/signup/', {
             username: this.state.username,
             password: this.state.password
         })
