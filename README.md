@@ -9,7 +9,7 @@ First install [node](https://nodejs.org/en/).  Once node is installed, install t
 
 ```bash
 npm install axios 0.21.1
-npm installbootstrap 4.5.3
+npm install bootstrap 4.5.3
 npm install react-bootstrap 1.4.0
 npm install react-dom 17.0.1
 npm install react-router-dom 5.2.0
