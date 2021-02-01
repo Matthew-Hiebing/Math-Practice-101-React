@@ -24,5 +24,8 @@ npm install validate.js 0.13.1
 npm install web-vitals 0.2.4
 ```
 
+### Here's an example of what the game page should look like once you're logged in.
+![imgur](https://i.imgur.com/NCsI4mL.jpg)
+
 ## Questions?
 Send me a message on GitHub (Matthew-Hiebing) or E-mail me at: Matthew.Hiebing@gmail.com
