@@ -1,8 +1,8 @@
 # Python Math Game Using React
 
-This project was created to handle the front-end from the Python Math Game [Website](https://math-game-django.herokuapp.com/).  The original project used Django as the front-end and back-end, [here](https://github.com/Matthew-Hiebing/Python-Math-Game) is a link to the original Django project repo.
+This project was created to handle the front-end from the Python Math Game [Website](https://math-game-django.herokuapp.com/).  The original project used Django for the front- and back-end, [here](https://github.com/Matthew-Hiebing/Python-Math-Game) is a link to the original Django project repo if you want check it out.
 
-The React page is [here]().
+The React page is [here](https://math-game-react-frontend.herokuapp.com/game).
 
 ## Installation
 First install [node](https://nodejs.org/en/).  Once node is installed, install the following packages:
