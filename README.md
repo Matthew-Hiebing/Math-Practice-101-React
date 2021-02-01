@@ -17,6 +17,11 @@ npm install react-scripts 4.0.1
 npm install react 17.0.1
 npm install web-vitals 0.2.4
 npm install recharts 1.8.5
+npm install lodash 4.17.20
+npm install moment 2.29.1
+npm install recharts 1.8.5
+npm install validate.js 0.13.1
+npm install web-vitals 0.2.4
 ```
 
 ## Questions?
