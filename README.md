@@ -5,7 +5,7 @@ This project was created to handle the front-end from the Python Math Game [Webs
 The React page is [here](https://math-game-react-frontend.herokuapp.com/game).
 
 ## Installation
-First install [node](https://nodejs.org/en/).  Once node is installed, install the following packages:
+First install [node](https://math-game-react-frontend.herokuapp.com/).  Once node is installed, install the following packages:
 
 ```bash
 npm install axios 0.21.1
