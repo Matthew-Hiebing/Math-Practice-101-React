@@ -28,7 +28,7 @@ class App extends React.Component {
     let tempState = this.state;
     tempState.is_logged_in = false;
     tempState.user_payload = {}
-    localStorage.clear()
+    localStorage.clear() // local storage is storing the bearer token for jwt login.
 
     this.setState(tempState);
   }
@@ -36,9 +36,7 @@ class App extends React.Component {
   loginHandler = () => {
     let tempState = this.state;
     tempState.is_logged_in = true;
-
     tempState.user_payload = payloadParser();
-
     this.setState(tempState);
   }
 

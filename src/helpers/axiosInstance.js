@@ -17,7 +17,7 @@ axiosInstance.interceptors.response.use(
     error => {
         const originalRequest = error.config;
 
-        if (error.response.status === 401 && originalRequest.url === baseURL+'token/refresh/') {
+        if (error.response.status === 401 && originalRequest.url === baseURL+'token/refresh/') { // 401 == unauthorized (key expired or you're not logged in).
             localStorage.clear()
             window.location.href = '/login/';
             return Promise.reject(error);
@@ -25,9 +25,9 @@ axiosInstance.interceptors.response.use(
 
         if (error.response.data.code === "token_not_valid" &&
             error.response.status === 401 &&
-            error.response.statusText === "Unauthorized")
+            error.response.statusText === "Unauthorized") // You are unauthorized, your token likely expired.
             {
-                const refresh_token = localStorage.getItem('refresh_token');
+                const refresh_token = localStorage.getItem('refresh_token'); // Grab refresh token.
 
                 if (refresh_token) {
                     const tokenParts = JSON.parse(atob(refresh_token.split('.')[1]));
