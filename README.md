@@ -15,13 +15,11 @@ npm install react-dom 17.0.1
 npm install react-router-dom 5.2.0
 npm install react-scripts 4.0.1
 npm install react 17.0.1
-npm install web-vitals 0.2.4
 npm install recharts 1.8.5
 npm install lodash 4.17.20
 npm install moment 2.29.1
 npm install recharts 1.8.5
 npm install validate.js 0.13.1
-npm install web-vitals 0.2.4
 ```
 
 ### Here's an example of what the game page should look like once you're logged in.
