@@ -10,11 +10,9 @@ import {
 } from 'recharts';
 
 const barColors = ["#34ed4180", "#ff000080", "#1e21c980"]
-
 export default class Example extends React.Component {
     constructor(props) {
         super(props);
-
         this.state = {
             chartData: [
                 {
@@ -37,30 +35,30 @@ export default class Example extends React.Component {
         return (
             <ResponsiveContainer width="95%" height={450}>
                 <BarChart
-                    data={this.state.chartData.slice()}
-                    margin={{ top: 20, right: 20, left: 20, bottom: 5, }}
+                data={this.state.chartData.slice()}
+                margin={{ top: 20, right: 20, left: 20, bottom: 5, }}
                 >
                 <XAxis
-                    dataKey="name"
-                    stroke="#000000"
+                dataKey="name"
+                stroke="#000000"
                 />
                 <YAxis
-                    stroke="#000000"
+                stroke="#000000"
                 />
                 <Tooltip
-                    wrapperStyle={{ width: 100, backgroundColor: '#ccc' }}
-                    formatter={function(total) {return `${total}`}}
+                wrapperStyle={{ width: 100, backgroundColor: '#ccc' }}
+                formatter={function(total) {return `${total}`}}
                 />
                 <Bar
-                    dataKey="total"
-                    stroke="#000000"
-                    strokeWidth={1}
+                dataKey="total"
+                stroke="#000000"
+                strokeWidth={1}
                 >
-                    {
-                        this.state.chartData.map((entry, index) => (
-                            <Cell key={`cell-${index}`} fill={barColors[index]} />
-                        ))
-                    }
+                {
+                    this.state.chartData.map((entry, index) => (
+                        <Cell key={`cell-${index}`} fill={barColors[index]} />
+                    ))
+                }
                 </Bar>
                 </BarChart>
             </ResponsiveContainer>

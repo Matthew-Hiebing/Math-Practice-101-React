@@ -4,9 +4,7 @@ import { Jumbotron, Button } from 'react-bootstrap';
 export default class Home extends React.Component {
     constructor(props) {
         super(props);
-
-        this.state = {
-        }
+        this.state = {}
     }
 
     render() {
@@ -33,13 +31,9 @@ export default class Home extends React.Component {
                         </div>
                     </div>
                     <hr className="my-2"></hr>
-                    <p>
-                        Welcome to the homepage.  If you haven't already signed up for an account, please do so.  If you are not already logged in, please login to gain full access to the site.
-
-                        If you want to test the game without creating your own set of credentials here is a username and password you can use.
-                    </p>
-                    <p>userTest</p>
-                    <p>difficultPassword23</p>
+                    <p>Welcome to the homepage.  If you haven't already signed up for an account, please do so.  If you are not already logged in, please login to gain full access to the site.  If you want to test the game without creating your own set of credentials here is a username and password you can use.</p>
+                    <p>Username: userTest</p>
+                    <p>Password: difficultPassword23</p>
                     {
                         (this.props.is_logged_in) ?
                         (

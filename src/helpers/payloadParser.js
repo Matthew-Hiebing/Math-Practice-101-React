@@ -4,7 +4,7 @@ function payloadParser() {
     // Grab the newly stored token
     const accessToken = localStorage.getItem('access_token')
 
-    // Decode it by spliting.
+    // Decode it by splitting.
     let tokenPayload = JSON.parse(atob(accessToken.split(".")[1]))
 
     // Get the last login date and time from the current user.

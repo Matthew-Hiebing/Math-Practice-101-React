@@ -52,9 +52,7 @@ export default class Game extends React.Component {
             let tempState = this.state;
             tempState.game_properties.splash_screen.splash_screen_text = response.data.splash_screen.splash_screen_text;
             tempState.game_properties.splash_screen.splash_screen_preference = response.data.splash_screen.splash_screen_preference;
-
             this.setState(tempState, this.validateInput());
-
         });
     }
 
@@ -71,9 +69,7 @@ export default class Game extends React.Component {
     splashScreenHandler = (event) => {
         let tempState = this.state;
         tempState.game_properties.splash_screen.checkbox_state = event.target.checked;
-
         this.setState(tempState);
-
         axiosInstance.post('api/user_preferences/set_preference', {
             splash_screen_name: "Math",
             display_on_refresh: !this.state.game_properties.splash_screen.checkbox_state
@@ -87,7 +83,7 @@ export default class Game extends React.Component {
     }
 
     submitHandler = (event) => {
-        // Prevent form from sending.
+        // Prevent form from automatically sending something.
         event.preventDefault();
     }
 
@@ -103,12 +99,11 @@ export default class Game extends React.Component {
         tempState.game_properties.startButtonState.value = true;
         tempState.game_properties.checkButtonState.value = true;
         tempState.game_properties.answerFieldState.value = false;
-
         this.setState(tempState, this.changeButtonText());
     }
 
     checkButtonHandler = () => {
-        // Check if user's answer is corrrect.
+        // Check if user's answer is correct.
         let input = parseInt(this.state.game_properties.problem.user_input);
         let answer = parseInt(this.state.game_properties.problem.problem_answer);
         let tempState = this.state;
@@ -133,10 +128,8 @@ export default class Game extends React.Component {
         // Grab the user's answer string.
         let input = event.target.value
         let tempState = this.state;
-
         tempState.game_properties.answerFieldErrors = answerValidator(input)
         tempState.game_properties.problem.user_input = input
-
         if (_.isEmpty(tempState.game_properties.answerFieldErrors)) {
             tempState.game_properties.checkButtonState.value = false
         } else if (!_.isEmpty(tempState.game_properties.answerFieldErrors)) {
@@ -146,7 +139,6 @@ export default class Game extends React.Component {
         } else {
             tempState.game_properties.checkButtonState.value = false;
         }
-
         this.setState(tempState);
     }
 
@@ -159,7 +151,6 @@ export default class Game extends React.Component {
     tallyBarChartData = (status) => {
         // Tally user's current math results.  Data is wiped on refresh.
         let tempState = this.state;
-
         switch (status) {
             case "incorrect":
                 tempState.game_properties.chartData.incorrectCounter += 1;
@@ -171,7 +162,6 @@ export default class Game extends React.Component {
                 break;
         }
         tempState.game_properties.chartData.totalCounter += 1;
-
         this.setState(tempState);
     }
 
@@ -210,11 +200,11 @@ export default class Game extends React.Component {
                                 /> Don't show this message again.
                             </p>
                         </div>
-                    ) : (null) // if user does not want to see spashscreen show nothing.
+                    ) : (null) // if user does not want to see splash screen show nothing.
                     }
 
                     {
-                    (this.props.is_logged_in) ? // if logged in show logout button.
+                    (this.props.is_logged_in) ? // if logged in, show logout button.
                         (
                             <div className="col text-center">
                                 <Button

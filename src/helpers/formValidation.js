@@ -1,9 +1,8 @@
 import { validate } from 'validate.js'
 
-
+// Validate.js to validate user inputs.  Check for decimals, strings, numbers.
 function answerValidator(user_input) {
-
-    validate.validators.decimalAbscence = function (value, attributes, attributeName, options, constraints) {
+    validate.validators.decimalAbsence = function (value, attributes, attributeName, options, constraints) {
         if (!value.includes(".")) return undefined;
         return "Answer cannot contain decimals!"
     }
@@ -29,7 +28,7 @@ function answerValidator(user_input) {
                 maximum: 3,
                 message: "You are only allowed to enter an answer length between 0 and 3!"
             },
-            decimalAbscence: {},
+            decimalAbsence: {},
             emptyString: {},
             numericality : {},
             presence: { allowEmpty: false, message: "Answer field cannot be blank!" }

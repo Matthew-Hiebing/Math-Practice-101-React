@@ -6,7 +6,6 @@ import ScoresChart from './ScoresChart';
 export default class Home extends React.Component {
     constructor(props) {
         super(props);
-
         this.state = {
             chartData: {
                 correctCounter: 0,
