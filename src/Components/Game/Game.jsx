@@ -47,6 +47,8 @@ export default class Game extends React.Component {
     }
 
     componentDidMount() {
+        // Send get request to backend requesting user's splash screen preferences (splash screen message and preference).
+        // We are requesting preferences for the "Math" game but the backend allows for multiple game types.
         axiosInstance.get('/api/game-properties/math')
         .then((response) => {
             let tempState = this.state;
@@ -172,6 +174,7 @@ export default class Game extends React.Component {
     }
 
     sendMathResults = () => {
+        // Submit the user's problem, answer, user's answer, and true/false status to the backend.
         axiosInstance.post('/api/scoring/submit_score_details', {
             "math_problem": this.state.game_properties.problem.problem_string,
             "true_answer": this.state.game_properties.problem.problem_answer,

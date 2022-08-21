@@ -16,6 +16,7 @@ export default class Home extends React.Component {
     }
 
     componentDidMount() {
+        // Request the user's current score details from the backend, which pull from db.
         axiosInstance.get('api/scoring/request_score_details')
         .then((response) => {
             let tempState = this.state;

@@ -22,10 +22,12 @@ export default class Login extends React.Component {
 
     loginButtonHandler = (event) => {
         event.preventDefault();
+        // Send post request to backend containing username and password.
         axiosInstance.post('token/obtain/', {
             username: this.state.username,
             password: this.state.password
         })
+        //Response from backend provides access token and refresh token so the user can login and stay logged in.
         .then((response) => {
             // Store the keys
             localStorage.setItem('access_token', response.data.access);
@@ -57,7 +59,7 @@ export default class Login extends React.Component {
                             isInvalid={!!this.state.errors}
                         />
                         {
-                            (!!this.state.errors) ?
+                            (!!this.state.errors) ? // Check if there are errors.  Check truthy or falsy using double bang operator.
                             (
                                 <Form.Control.Feedback type="invalid">
                                     {this.state.errors.data.detail}

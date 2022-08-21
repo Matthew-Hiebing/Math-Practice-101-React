@@ -63,7 +63,7 @@ class App extends React.Component {
                         {
                         (!!this.state.user_payload) ?
                         (
-                            (this.state.user_payload.is_staff) ?
+                            (this.state.user_payload.is_staff) ?  // If the user is "staff", provide them with the admin page.
                                 (<a className="navbar-brand" href="https://math-game-react-backend.herokuapp.com/admin">Admin</a>) :
                             (null)
                         ) : null

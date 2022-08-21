@@ -39,11 +39,14 @@ export default class Signup extends React.Component {
     }
 
     submitButtonHandler = (event) => {
-        event.preventDefault();
+        event.preventDefault(); // Prevent default form action.
+        // Send username and password from signup page to backend where the backend creates a new user record.
         axios.post('https://math-game-react-backend.herokuapp.com/accounts/signup/', {
             username: this.state.username,
             password: this.state.password
         })
+        // After submission is sent and completed, the backend sends back a response containing the status of
+        // the submission workflow.  The user won't see the response unless they're looking at the console.
         .then((response) => {
             console.log(response);
             if (response.status === 201) {
