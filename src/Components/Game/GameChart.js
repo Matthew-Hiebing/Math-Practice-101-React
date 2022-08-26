@@ -9,7 +9,7 @@ import {
     Tooltip,
 } from 'recharts';
 
-const barColors = ["#34ed4180", "#ff000080", "#1e21c980"]
+const barColors = ['#34ed4180', '#ff000080', '#1e21c980'];
 
 export default class GameChart extends React.Component {
     constructor(props) {
@@ -29,12 +29,14 @@ export default class GameChart extends React.Component {
                     name: 'Total',
                     total: 0,
                 },
-            ]
-        }
+            ],
+        };
     }
 
     componentDidUpdate(prevProps) {
-        if (prevProps.chartData.totalCounter !== this.state.chartData[2].total) {
+        if (
+            prevProps.chartData.totalCounter !== this.state.chartData[2].total
+        ) {
             let tempState = this.state;
             tempState.chartData = [
                 {
@@ -54,46 +56,47 @@ export default class GameChart extends React.Component {
         }
     }
 
-    render () {
+    render() {
         return (
             <div>
-                {
-                    (this.state.chartData[2].total > 0) ?
-                        (<ResponsiveContainer width="95%" height={250}>
-                            <BarChart
-                                data={this.state.chartData.slice()}
-                                layout="vertical" barCategoryGap={5}
-                                margin={{top: 20, right: 30, left: 20, bottom: 5,}}
+                {this.state.chartData[2].total > 0 ? (
+                    <ResponsiveContainer width="95%" height={250}>
+                        <BarChart
+                            data={this.state.chartData.slice()}
+                            layout="vertical"
+                            barCategoryGap={5}
+                            margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+                        >
+                            <XAxis type="number" stroke="#000000" />
+                            <YAxis
+                                type="category"
+                                stroke="#000000"
+                                dataKey="name"
+                            />
+                            <Tooltip
+                                wrapperStyle={{
+                                    width: 100,
+                                    backgroundColor: '#ccc',
+                                }}
+                                formatter={function (name) {
+                                    return `${name}`;
+                                }}
+                            />
+                            <Bar
+                                dataKey="total"
+                                stroke="#000000"
+                                strokeWidth={1}
                             >
-                                <XAxis
-                                    type="number"
-                                    stroke="#000000"
-                                />
-                                <YAxis
-                                    type="category"
-                                    stroke="#000000"
-                                    dataKey="name"
-                                />
-                                <Tooltip
-                                    wrapperStyle={{ width: 100, backgroundColor: '#ccc' }}
-                                    formatter={function(name) {return `${name}`}}
-                                />
-                                <Bar
-                                    dataKey="total"
-                                    stroke="#000000"
-                                    strokeWidth={1}
-                                >
-                                    {
-                                        this.state.chartData.map((entry, index) => (
-                                            <Cell key={`cell-${index}`} fill={barColors[index]} />
-                                        ))
-                                    }
-                                </Bar>
-                            </BarChart>
-                        </ResponsiveContainer>
-                    ):
-                (null)
-                }
+                                {this.state.chartData.map((entry, index) => (
+                                    <Cell
+                                        key={`cell-${index}`}
+                                        fill={barColors[index]}
+                                    />
+                                ))}
+                            </Bar>
+                        </BarChart>
+                    </ResponsiveContainer>
+                ) : null}
             </div>
         );
     }
