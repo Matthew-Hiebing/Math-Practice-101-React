@@ -25,5 +25,20 @@ npm install validate.js 0.13.1
 ### Here's an example of what the game page should look like once you're logged in.
 ![imgur](https://i.imgur.com/NCsI4mL.jpg)
 
+Below is a short demonstration of the webpage.
+<p align="center">
+  <img src="https://media.giphy.com/media/emrnLZghQZUuxybzUD/giphy.gif" />
+</p>
+
+Some improvements that I may implement at a later date:\
+1.) Difficulty Selection - Increasee or decrease the random integers that are used in the math problems.\
+2.) Operator Selection - Allow users to select what type of math problems they want to see.\
+3.) Problem Batch Mode - Give the users pre-made batches of problems instead of one at a time.\
+4.) Improved Stats Analysis - Give the teacher a better overview of the students performance using graphs/charts.
+
+## Creators
+Matthew Hiebing: [Matthew-Hiebing](https://github.com/Matthew-Hiebing)\
+Guillermo Vargas: [gavargas22](https://github.com/gavargas22)
+
 ## Questions?
 Send me a message on GitHub (Matthew-Hiebing) or E-mail me at: Matthew.Hiebing@gmail.com
