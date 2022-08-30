@@ -2,7 +2,7 @@
 
 This project was created to handle the front-end from the Django-based Python Math Game [Website](https://math-game-django.herokuapp.com/).  The original project used Django for the front and back-end. [Here](https://github.com/Matthew-Hiebing/Python-Math-Game) is a link to the original Django project repo if you want check it out.
 
-The newest version of this webpage uses React for the frontend and can be found [here](https://math-game-react-frontend.herokuapp.com/).  The server may take some time to spin up, please be patient and/or refresh the page if its not working.
+The newest version of this webpage uses React for the frontend and Django for the backend.  It can be found [here](https://math-game-react-frontend.herokuapp.com/).  The server may take some time to spin up, please be patient and/or refresh the page if its not working.
 
 ## Installation
 First install [node](https://math-game-react-frontend.herokuapp.com/).  Once node is installed, install the following packages:
