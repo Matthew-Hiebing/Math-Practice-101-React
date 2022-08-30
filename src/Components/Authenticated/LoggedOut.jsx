@@ -15,12 +15,12 @@ export default class LoggedOut extends React.Component {
             <div>
                 <Jumbotron>
                     <h1>Logged Out</h1>
-                    <hr className="my-2"></hr>
+                    <hr className='my-2'></hr>
                     <p>We're sorry to see you leave. Come back another time.</p>
                     <Button
-                        id="login"
-                        type="submit"
-                        className="btn btn-dark"
+                        id='login'
+                        type='submit'
+                        className='btn btn-dark'
                         onClick={() => this.props.history.push('/login')}
                     >
                         Login

@@ -5,9 +5,9 @@ export default class FormErrors extends React.Component {
         if (this.props.formErrors !== null) {
             return (
                 <div
-                    id="form-error-alert"
-                    className="alert alert-danger"
-                    role="alert"
+                    id='form-error-alert'
+                    className='alert alert-danger'
+                    role='alert'
                 >
                     {this.props.formErrors.map((formError, index) => {
                         return <p key={index}>{formError.error}</p>;

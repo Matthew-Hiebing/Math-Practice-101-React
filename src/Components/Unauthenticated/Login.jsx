@@ -48,44 +48,44 @@ export default class Login extends React.Component {
 
     render() {
         return (
-            <div class="jumbotron">
+            <div class='jumbotron'>
                 <Form>
-                    <Form.Group controlId="formBasicUsername">
+                    <Form.Group controlId='formBasicUsername'>
                         <Form.Label>Username</Form.Label>
                         <Form.Control
-                            name="username"
-                            type="input"
-                            placeholder="Enter your username here"
+                            name='username'
+                            type='input'
+                            placeholder='Enter your username here'
                             onChange={this.inputFieldHandler}
                             isInvalid={!!this.state.errors}
                         />
                         {!!this.state.errors ? ( // Check if there are errors.  Check truthy or falsy using double bang operator.
-                            <Form.Control.Feedback type="invalid">
+                            <Form.Control.Feedback type='invalid'>
                                 {this.state.errors.data.detail}
                             </Form.Control.Feedback>
                         ) : null}
                     </Form.Group>
 
-                    <Form.Group controlId="formBasicPassword">
+                    <Form.Group controlId='formBasicPassword'>
                         <Form.Label>Password</Form.Label>
                         <Form.Control
-                            name="password"
-                            type="password"
-                            autoComplete="off"
-                            placeholder="Enter your password here"
+                            name='password'
+                            type='password'
+                            autoComplete='off'
+                            placeholder='Enter your password here'
                             onChange={this.inputFieldHandler}
                             isInvalid={!!this.state.errors}
                         />
                         {!!this.state.errors ? (
-                            <Form.Control.Feedback type="invalid">
+                            <Form.Control.Feedback type='invalid'>
                                 {this.state.errors.data.details}
                             </Form.Control.Feedback>
                         ) : null}
                     </Form.Group>
 
                     <Button
-                        className="btn btn-dark"
-                        type="submit"
+                        className='btn btn-dark'
+                        type='submit'
                         onClick={this.loginButtonHandler}
                     >
                         Login

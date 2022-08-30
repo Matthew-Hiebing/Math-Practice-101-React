@@ -40,7 +40,7 @@ export default class Home extends React.Component {
             <div>
                 <Jumbotron>
                     <h1>Scores and Results Analysis</h1>
-                    <hr className="my-2"></hr>
+                    <hr className='my-2'></hr>
                     <p>Below is a representation of your math game results.</p>
                     {this.props.is_logged_in ? ( // if logged in show logout button.
                         <div>
@@ -52,9 +52,9 @@ export default class Home extends React.Component {
                                 ) : null}
                             </div>
                             <Button
-                                id="logout"
-                                type="submit"
-                                className="btn btn-dark"
+                                id='logout'
+                                type='submit'
+                                className='btn btn-dark'
                                 onClick={() =>
                                     this.props.history.push('/logged-out')
                                 }
@@ -66,9 +66,9 @@ export default class Home extends React.Component {
                         // if logged in show logout button.
                         <div>
                             <Button
-                                id="login"
-                                type="submit"
-                                className="btn btn-dark"
+                                id='login'
+                                type='submit'
+                                className='btn btn-dark'
                                 onClick={() =>
                                     this.props.history.push('/login')
                                 }

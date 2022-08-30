@@ -70,43 +70,43 @@ export default class Signup extends React.Component {
 
     render() {
         return (
-            <div class="jumbotron">
+            <div class='jumbotron'>
                 <Form>
-                    <Form.Group controlId="formBasicUsername">
+                    <Form.Group controlId='formBasicUsername'>
                         <Form.Label>Username</Form.Label>
                         <Form.Control
-                            name="username"
-                            type="input"
-                            placeholder="Enter your username here"
+                            name='username'
+                            type='input'
+                            placeholder='Enter your username here'
                             onChange={this.inputFieldHandler}
                         />
                     </Form.Group>
 
-                    <Form.Group controlId="formBasicPassword">
+                    <Form.Group controlId='formBasicPassword'>
                         <Form.Label>Password</Form.Label>
                         <Form.Control
-                            name="password"
-                            type="password"
-                            placeholder="Enter your password here"
+                            name='password'
+                            type='password'
+                            placeholder='Enter your password here'
                             onChange={this.inputFieldHandler}
                             isValid={this.state.passwordsMatch}
                         />
                     </Form.Group>
 
-                    <Form.Group controlId="formBasicPasswordConfirmation">
+                    <Form.Group controlId='formBasicPasswordConfirmation'>
                         <Form.Label>Password Confirmation</Form.Label>
                         <Form.Control
-                            name="passwordConfirmation"
-                            type="password"
-                            placeholder="Enter your password here"
+                            name='passwordConfirmation'
+                            type='password'
+                            placeholder='Enter your password here'
                             onChange={this.inputFieldHandler}
                             isValid={this.state.passwordsMatch}
                         />
                     </Form.Group>
 
                     <Button
-                        className="btn btn-dark"
-                        type="submit"
+                        className='btn btn-dark'
+                        type='submit'
                         onClick={this.submitButtonHandler}
                     >
                         Submit

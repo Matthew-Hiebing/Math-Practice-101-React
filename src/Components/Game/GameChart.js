@@ -60,18 +60,18 @@ export default class GameChart extends React.Component {
         return (
             <div>
                 {this.state.chartData[2].total > 0 ? (
-                    <ResponsiveContainer width="95%" height={250}>
+                    <ResponsiveContainer width='95%' height={250}>
                         <BarChart
                             data={this.state.chartData.slice()}
-                            layout="vertical"
+                            layout='vertical'
                             barCategoryGap={5}
                             margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
                         >
-                            <XAxis type="number" stroke="#000000" />
+                            <XAxis type='number' stroke='#000000' />
                             <YAxis
-                                type="category"
-                                stroke="#000000"
-                                dataKey="name"
+                                type='category'
+                                stroke='#000000'
+                                dataKey='name'
                             />
                             <Tooltip
                                 wrapperStyle={{
@@ -83,8 +83,8 @@ export default class GameChart extends React.Component {
                                 }}
                             />
                             <Bar
-                                dataKey="total"
-                                stroke="#000000"
+                                dataKey='total'
+                                stroke='#000000'
                                 strokeWidth={1}
                             >
                                 {this.state.chartData.map((entry, index) => (

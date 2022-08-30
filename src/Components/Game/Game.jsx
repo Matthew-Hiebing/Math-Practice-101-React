@@ -197,11 +197,11 @@ export default class Game extends React.Component {
             <div>
                 <Jumbotron>
                     <h1>Welcome to Math 101!</h1>
-                    <hr className="my-2"></hr>
+                    <hr className='my-2'></hr>
                     {
                         this.state.game_properties.splash_screen
                             .splash_screen_preference ? ( // if user wants to see splash screen show splash screen.
-                            <div className="alert alert-primary">
+                            <div className='alert alert-primary'>
                                 <p>
                                     {
                                         this.state.game_properties.splash_screen
@@ -210,8 +210,8 @@ export default class Game extends React.Component {
                                 </p>
                                 <p>
                                     <input
-                                        name="splash"
-                                        type="checkbox"
+                                        name='splash'
+                                        type='checkbox'
                                         checked={
                                             this.state.game_properties
                                                 .splash_screen.checkbox_state
@@ -225,15 +225,15 @@ export default class Game extends React.Component {
                     }
 
                     {this.props.is_logged_in ? ( // if logged in, show logout button.
-                        <div className="col text-center">
+                        <div className='col text-center'>
                             <Button
-                                id="startNewProblemButton"
-                                type="button"
+                                id='startNewProblemButton'
+                                type='button'
                                 disabled={
                                     this.state.game_properties.startButtonState
                                         .value
                                 }
-                                className="btn btn-primary btn-lg"
+                                className='btn btn-primary btn-lg'
                                 onClick={this.startButtonHandler}
                             >
                                 {
@@ -241,20 +241,20 @@ export default class Game extends React.Component {
                                         .text
                                 }
                             </Button>
-                            <p id="problemText">
+                            <p id='problemText'>
                                 {
                                     this.state.game_properties.problem
                                         .problem_string
                                 }
                             </p>
-                            <p id="problemAnswer">
+                            <p id='problemAnswer'>
                                 {this.state.game_properties.problem.show_answer}
                             </p>
-                            <Form.Group controlId="exampleForm.ControlInput1">
+                            <Form.Group controlId='exampleForm.ControlInput1'>
                                 <Form.Control
-                                    placeholder="Enter your answer here"
-                                    type="input"
-                                    autoComplete="off"
+                                    placeholder='Enter your answer here'
+                                    type='input'
+                                    autoComplete='off'
                                     value={
                                         this.state.game_properties.problem
                                             .user_input
@@ -272,8 +272,8 @@ export default class Game extends React.Component {
                                 />
                             </Form.Group>
                             <Button
-                                id="checkButton"
-                                type="button"
+                                id='checkButton'
+                                type='button'
                                 disabled={
                                     this.state.game_properties.checkButtonState
                                         .value
@@ -312,10 +312,10 @@ export default class Game extends React.Component {
                                 />
                             </div>
                             <br />
-                            <div className="text-left">
+                            <div className='text-left'>
                                 <Button
-                                    type="button"
-                                    className="btn btn-dark"
+                                    type='button'
+                                    className='btn btn-dark'
                                     onClick={() =>
                                         this.props.history.push('/logged-out')
                                     }
@@ -326,10 +326,10 @@ export default class Game extends React.Component {
                         </div>
                     ) : (
                         // if not logged in show login button.
-                        <div className="text-left">
+                        <div className='text-left'>
                             <Button
-                                type="button"
-                                className="btn btn-dark"
+                                type='button'
+                                className='btn btn-dark'
                                 onClick={() =>
                                     this.props.history.push('/login')
                                 }
