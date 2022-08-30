@@ -141,6 +141,7 @@ export default class Game extends React.Component {
         let tempState = this.state;
         tempState.game_properties.answerFieldErrors = answerValidator(input);
         tempState.game_properties.problem.user_input = input;
+        // Use Lodash "_.isEmpty" to check answer submissions and whether they're empty.
         if (_.isEmpty(tempState.game_properties.answerFieldErrors)) {
             tempState.game_properties.checkButtonState.value = false;
         } else if (!_.isEmpty(tempState.game_properties.answerFieldErrors)) {
