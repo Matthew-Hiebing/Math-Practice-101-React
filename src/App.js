@@ -57,21 +57,26 @@ class App extends React.Component {
                         {this.state.is_logged_in ? ( // if logged this navbar is rendered
                             <Navbar className='navbar navbar-expand-lg navbar-dark bg-dark'>
                                 <div className='container'>
-                                    <Link className='navbar-brand' to='/'>
+                                    <Link
+                                        className='navbar-brand'
+                                        to='/'>
                                         Home
                                     </Link>
-                                    <Link className='navbar-brand' to='/game'>
+                                    <Link
+                                        className='navbar-brand'
+                                        to='/game'>
                                         Game
                                     </Link>
-                                    <Link className='navbar-brand' to='/scores'>
+                                    <Link
+                                        className='navbar-brand'
+                                        to='/scores'>
                                         Scores
                                     </Link>
                                     {!!this.state.user_payload ? (
                                         this.state.user_payload.is_staff ? ( // If the user is "staff", provide them with the admin page.
                                             <a
                                                 className='navbar-brand'
-                                                href='https://math-game-react-backend.herokuapp.com/admin'
-                                            >
+                                                href='https://math-game-react-backend.herokuapp.com/admin'>
                                                 Admin
                                             </a>
                                         ) : null
@@ -82,7 +87,9 @@ class App extends React.Component {
                             // if not logged this navbar is rendered
                             <Navbar className='navbar navbar-expand-lg navbar-dark bg-dark'>
                                 <div className='container'>
-                                    <Link className='navbar-brand' to='/'>
+                                    <Link
+                                        className='navbar-brand'
+                                        to='/'>
                                         Home
                                     </Link>
                                 </div>
@@ -108,7 +115,10 @@ class App extends React.Component {
                                     <Route
                                         path='/game'
                                         component={(props) => (
-                                            <Game {...props} {...this.state} />
+                                            <Game
+                                                {...props}
+                                                {...this.state}
+                                            />
                                         )}
                                     />
                                     <Route

@@ -33,12 +33,16 @@ export default class Example extends React.Component {
 
     render() {
         return (
-            <ResponsiveContainer width='95%' height={450}>
+            <ResponsiveContainer
+                width='95%'
+                height={450}>
                 <BarChart
                     data={this.state.chartData.slice()}
-                    margin={{ top: 20, right: 20, left: 20, bottom: 5 }}
-                >
-                    <XAxis dataKey='name' stroke='#000000' />
+                    margin={{ top: 20, right: 20, left: 20, bottom: 5 }}>
+                    <XAxis
+                        dataKey='name'
+                        stroke='#000000'
+                    />
                     <YAxis stroke='#000000' />
                     <Tooltip
                         wrapperStyle={{ width: 100, backgroundColor: '#ccc' }}
@@ -46,7 +50,10 @@ export default class Example extends React.Component {
                             return `${total}`;
                         }}
                     />
-                    <Bar dataKey='total' stroke='#000000' strokeWidth={1}>
+                    <Bar
+                        dataKey='total'
+                        stroke='#000000'
+                        strokeWidth={1}>
                         {this.state.chartData.map((entry, index) => (
                             <Cell
                                 key={`cell-${index}`}

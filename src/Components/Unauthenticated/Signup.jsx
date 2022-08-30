@@ -107,8 +107,7 @@ export default class Signup extends React.Component {
                     <Button
                         className='btn btn-dark'
                         type='submit'
-                        onClick={this.submitButtonHandler}
-                    >
+                        onClick={this.submitButtonHandler}>
                         Submit
                     </Button>
                 </Form>

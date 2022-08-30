@@ -21,8 +21,7 @@ export default class LoggedOut extends React.Component {
                         id='login'
                         type='submit'
                         className='btn btn-dark'
-                        onClick={() => this.props.history.push('/login')}
-                    >
+                        onClick={() => this.props.history.push('/login')}>
                         Login
                     </Button>
                 </Jumbotron>

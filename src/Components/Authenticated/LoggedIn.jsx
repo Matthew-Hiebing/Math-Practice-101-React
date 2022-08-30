@@ -16,8 +16,7 @@ export default class LoggedIn extends React.Component {
                         id='logout'
                         type='submit'
                         className='btn btn-dark'
-                        onClick={this.loginButtonHandler}
-                    >
+                        onClick={this.loginButtonHandler}>
                         Logout
                     </Button>
                 </Jumbotron>

@@ -235,8 +235,7 @@ export default class Game extends React.Component {
                                         .value
                                 }
                                 className='btn btn-primary btn-lg'
-                                onClick={this.startButtonHandler}
-                            >
+                                onClick={this.startButtonHandler}>
                                 {
                                     this.state.game_properties.startButtonState
                                         .text
@@ -289,8 +288,7 @@ export default class Game extends React.Component {
                                         ? 'btn-danger'
                                         : 'btn-primary')
                                 }
-                                onClick={this.checkButtonHandler}
-                            >
+                                onClick={this.checkButtonHandler}>
                                 {this.state.game_properties.problem.status ===
                                 'correct'
                                     ? 'Correct'
@@ -319,8 +317,7 @@ export default class Game extends React.Component {
                                     className='btn btn-dark'
                                     onClick={() =>
                                         this.props.history.push('/logged-out')
-                                    }
-                                >
+                                    }>
                                     Logout
                                 </Button>
                             </div>
@@ -333,8 +330,7 @@ export default class Game extends React.Component {
                                 className='btn btn-dark'
                                 onClick={() =>
                                     this.props.history.push('/login')
-                                }
-                            >
+                                }>
                                 Login
                             </Button>
                         </div>

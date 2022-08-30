@@ -86,8 +86,7 @@ export default class Login extends React.Component {
                     <Button
                         className='btn btn-dark'
                         type='submit'
-                        onClick={this.loginButtonHandler}
-                    >
+                        onClick={this.loginButtonHandler}>
                         Login
                     </Button>
                 </Form>

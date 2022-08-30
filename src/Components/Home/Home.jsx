@@ -49,8 +49,7 @@ export default class Home extends React.Component {
                                 className='btn btn-dark'
                                 onClick={() =>
                                     this.props.history.push('/logged-out')
-                                }
-                            >
+                                }>
                                 Logout
                             </Button>
                         </div>
@@ -62,8 +61,7 @@ export default class Home extends React.Component {
                                 className='btn btn-dark'
                                 onClick={() =>
                                     this.props.history.push('/login')
-                                }
-                            >
+                                }>
                                 Login
                             </Button>
                             <Button
@@ -72,8 +70,7 @@ export default class Home extends React.Component {
                                 className='btn btn-dark'
                                 onClick={() =>
                                     this.props.history.push('/signup')
-                                }
-                            >
+                                }>
                                 Signup
                             </Button>
                         </div>
